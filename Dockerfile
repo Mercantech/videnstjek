@@ -5,14 +5,14 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
 # Copy project files
-COPY ["Blazor.csproj", "./"]
-COPY ["Models/*.cs", "./Models/"]
-COPY ["Service/*.cs", "./Service/"]
-COPY ["Components/**/*.razor", "./Components/"]
-COPY ["Components/**/*.razor.css", "./Components/"]
-COPY ["wwwroot/**/*", "./wwwroot/"]
-COPY ["Program.cs", "./"]
-COPY ["Properties/launchSettings.json", "./Properties/"]
+COPY ["Blazor/Blazor.csproj", "./"]
+COPY ["Blazor/Models/*.cs", "./Models/"]
+COPY ["Blazor/Service/*.cs", "./Service/"]
+COPY ["Blazor/Components/**/*.razor", "./Components/"]
+COPY ["Blazor/Components/**/*.razor.css", "./Components/"]
+COPY ["Blazor/wwwroot/**/*", "./wwwroot/"]
+COPY ["Blazor/Program.cs", "./"]
+COPY ["Blazor/Properties/launchSettings.json", "./Properties/"]
 
 # Restore dependencies
 RUN dotnet restore "Blazor.csproj"
