@@ -1,9 +1,7 @@
-version: '3.8'
-
 services:
   videnstjek-blazor:
     build:
-      context: ./Blazor
+      context: .
       dockerfile: ./Dockerfile
     container_name: videnstjek-blazor
     ports:
