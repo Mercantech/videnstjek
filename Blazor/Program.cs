@@ -15,6 +15,9 @@ namespace Blazor
             
             // Add QuizService
             builder.Services.AddScoped<IQuizService, QuizService>();
+            
+            // Add Health Checks
+            builder.Services.AddHealthChecks();
 
             var app = builder.Build();
 
@@ -32,6 +35,9 @@ namespace Blazor
             app.MapStaticAssets();
             app.MapRazorComponents<App>()
                 .AddInteractiveServerRenderMode();
+                
+            // Map health check endpoint
+            app.MapHealthChecks("/health");
 
             app.Run();
         }

@@ -44,6 +44,7 @@ Appen indeholder en quiz om **JWT & Token Sikkerhed** med 4 spørgsmål:
 ### Forudsætninger
 - .NET 9 SDK
 - En moderne webbrowser
+- Docker Desktop (for container deployment)
 
 ### Installation
 1. Klon repository'et
@@ -58,25 +59,47 @@ dotnet build
 dotnet run
 ```
 
+### Docker Deployment
+```bash
+# Build og start med Docker Compose
+docker-compose up --build
+
+# Eller kør i baggrunden
+docker-compose up -d --build
+
+# Production deployment
+docker-compose -f docker-compose.prod.yml up --build -d
+```
+
+Se `DOCKER.md` for detaljerede Docker instruktioner.
+
 ## 📁 Projektstruktur
 
 ```
-Blazor/
-├── Components/
-│   ├── Layout/
-│   │   ├── MainLayout.razor
-│   │   └── NavMenu.razor
-│   ├── Pages/
-│   │   ├── Home.razor          # Forside
-│   │   ├── QuizPage.razor      # Quiz funktionalitet
-│   │   ├── QuizList.razor      # Quiz oversigt
-│   │   ├── Admin.razor         # Quiz administration
-│   │   └── About.razor         # Om siden
-│   ├── App.razor               # Hovedapp
-│   └── Routes.razor            # Routing
-├── wwwroot/
-│   └── app.css                 # Custom styling
-└── Program.cs                  # App konfiguration
+videnstjek/
+├── Blazor/                      # Blazor applikation
+│   ├── Components/
+│   │   ├── Layout/
+│   │   │   ├── MainLayout.razor
+│   │   │   └── NavMenu.razor
+│   │   ├── Pages/
+│   │   │   ├── Home.razor          # Forside
+│   │   │   ├── QuizPage.razor      # Quiz funktionalitet
+│   │   │   ├── QuizList.razor      # Quiz oversigt
+│   │   │   ├── Admin.razor         # Quiz administration
+│   │   │   └── About.razor         # Om siden
+│   │   ├── App.razor               # Hovedapp
+│   │   └── Routes.razor            # Routing
+│   ├── wwwroot/
+│   │   └── app.css                 # Custom styling
+│   ├── Program.cs                  # App konfiguration
+│   └── Dockerfile                  # Docker image definition
+├── docker-compose.yml              # Development Docker Compose
+├── docker-compose.prod.yml         # Production Docker Compose
+├── deploy-docker.ps1               # PowerShell deployment script
+├── deploy-docker.bat               # Windows batch deployment script
+├── Makefile                        # Linux/macOS deployment
+└── DOCKER.md                       # Docker deployment guide
 ```
 
 ## 🎨 Design Features
