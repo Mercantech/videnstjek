@@ -3,7 +3,8 @@ version: '3.8'
 services:
   videnstjek-blazor:
     build:
-      dockerfile: Dockerfile
+      context: ./Blazor
+      dockerfile: ./Dockerfile
     container_name: videnstjek-blazor
     ports:
       - "8067:8067"
