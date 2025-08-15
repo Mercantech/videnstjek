@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  videnstjek-blazor:
+    build:
+      context: ./Blazor
+      dockerfile: Dockerfile
+    container_name: videnstjek-blazor
+    ports:
+      - "8067:8067"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8067
+    restart: unless-stopped
+    networks:
+      - videnstjek-network
+    volumes:
+      - ./Blazor/wwwroot/data:/app/wwwroot/data:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8067/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  videnstjek-network:
+    driver: bridge
