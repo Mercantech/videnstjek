@@ -1,0 +1,27 @@
+namespace Blazor.Models
+{
+    public class QuizData
+    {
+        public List<Quiz> Quizzes { get; set; } = new();
+    }
+
+    public class Quiz
+    {
+        public string Id { get; set; } = "";
+        public string Title { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string Category { get; set; } = "";
+        public string Difficulty { get; set; } = "";
+        public string EstimatedTime { get; set; } = "";
+        public List<QuizQuestion> Questions { get; set; } = new();
+    }
+
+    public class QuizQuestion
+    {
+        public int Id { get; set; }
+        public string QuestionText { get; set; } = "";
+        public Dictionary<string, string> Options { get; set; } = new();
+        public List<string> CorrectAnswers { get; set; } = new();
+        public Dictionary<string, string> Explanations { get; set; } = new();
+    }
+}

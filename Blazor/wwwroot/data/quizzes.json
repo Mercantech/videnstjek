@@ -1,0 +1,126 @@
+{
+  "quizzes": [
+    {
+      "id": "jwt-security",
+      "title": "JWT & Token Sikkerhed",
+      "description": "Test din viden om JWT tokens, refresh tokens og sikkerhedsaspekter",
+      "category": "Sikkerhed",
+      "difficulty": "Mellem",
+      "estimatedTime": "10-15 minutter",
+      "questions": [
+        {
+          "id": 1,
+          "questionText": "Hvor bliver et access-token typisk gemt på klienten?",
+          "options": {
+            "A": "I en SQL-database",
+            "B": "I en cookie (ofte HttpOnly)",
+            "C": "I sessionStorage eller localStorage",
+            "D": "I JWT-serveren"
+          },
+          "correctAnswers": ["B", "C"],
+          "explanations": {
+            "A": "❌ SQL er serverside – ikke relevant for klientlagring.",
+            "B": "✅ Cookies – især HttpOnly – er sikre mod XSS og bruges ofte til refresh-tokens.",
+            "C": "✅ localStorage/sessionStorage – nemme at bruge, men sårbare over for XSS.",
+            "D": "❌ JWT er \"self-contained\" – ikke nødvendigt at gemme dem på serveren, medmindre man blacklister eller tracker tokens."
+          }
+        },
+        {
+          "id": 2,
+          "questionText": "Hvad er hovedformålet med refresh tokens?",
+          "options": {
+            "A": "At gøre tokens sværere at forfalske",
+            "B": "At udvide login-sessionen uden at gøre access-tokenet langtidslevende",
+            "C": "At kunne nulstille adgangskoder",
+            "D": "At undgå at bruge cookies"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Det er signaturen i JWT, ikke refresh-tokenet, der gør det svært at forfalske.",
+            "B": "✅ Det er præcis formålet – holde brugeren logget ind uden at have farlige langlivede access-tokens.",
+            "C": "❌ Ikke relevant – nulstilling af adgangskode foregår typisk separat.",
+            "D": "❌ Refresh tokens kan netop gemmes i cookies – så dette er misvisende."
+          }
+        },
+        {
+          "id": 3,
+          "questionText": "Hvilken teknik bruges til at sikre, at en token kun virker fra en specifik browser/enhed?",
+          "options": {
+            "A": "Fingerprinting",
+            "B": "Salting",
+            "C": "Token-rotation",
+            "D": "TLS-pinning"
+          },
+          "correctAnswers": ["A"],
+          "explanations": {
+            "A": "✅ Fingerprinting matcher klientens \"digitalt aftryk\" (browser, OS, skærm, IP, user-agent osv.) med det, der blev brugt ved login.",
+            "B": "❌ Salting bruges i hashing af fx passwords, ikke i tokenvalidering.",
+            "C": "❌ Token-rotation handler om at skifte refresh-token ved brug – ikke identifikation af klient.",
+            "D": "❌ TLS-pinning bruges i mobile apps til at forhindre MITM-angreb – ikke relateret til tokenfingerprinting."
+          }
+        },
+        {
+          "id": 4,
+          "questionText": "Hvordan gemmer man refresh tokens, så man kan logge brugere ud pr. enhed?",
+          "options": {
+            "A": "Gem ét refresh-token pr. bruger i databasen",
+            "B": "Gem en liste af refresh-tokens med tilhørende enhedsinformation pr. bruger",
+            "C": "Gem ingen tokens – brug kun expiration",
+            "D": "Gem refresh-tokenet i localStorage"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Tillader kun én aktiv login – logger andre enheder ud.",
+            "B": "✅ Giver fleksibilitet til at håndtere flere enheder, tilbagekalde enkelte tokens og analysere sikkerhedsdata.",
+            "C": "❌ Ingen refresh tokens = brugeren skal logge ind manuelt efter udløb.",
+            "D": "❌ Klientlagring uden servervalidering tillader ikke serverkontrol eller udlogning."
+          }
+        }
+      ]
+    },
+    {
+      "id": "web-security",
+      "title": "Web Sikkerhed Grundlæggende",
+      "description": "Lær om de vigtigste sikkerhedsbegreber inden for webudvikling",
+      "category": "Sikkerhed",
+      "difficulty": "Begynder",
+      "estimatedTime": "8-12 minutter",
+      "questions": [
+        {
+          "id": 1,
+          "questionText": "Hvad er XSS (Cross-Site Scripting)?",
+          "options": {
+            "A": "En type database angreb",
+            "B": "Et angreb hvor skadelig kode indsættes i websteder",
+            "C": "En type phishing angreb",
+            "D": "Et angreb på server infrastruktur"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ XSS handler ikke om databaser direkte.",
+            "B": "✅ XSS er et angreb hvor skadelig JavaScript kode indsættes i websteder.",
+            "C": "❌ Phishing er et separat sikkerhedsproblem.",
+            "D": "❌ XSS fokuserer på klient-side, ikke server infrastruktur."
+          }
+        },
+        {
+          "id": 2,
+          "questionText": "Hvad er HTTPS?",
+          "options": {
+            "A": "En hurtigere version af HTTP",
+            "B": "HTTP med kryptering (TLS/SSL)",
+            "C": "En ny protokol der erstatter HTTP",
+            "D": "En type database protokol"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ HTTPS er ikke nødvendigvis hurtigere end HTTP.",
+            "B": "✅ HTTPS er HTTP med TLS/SSL kryptering for sikker kommunikation.",
+            "C": "❌ HTTPS er en udvidelse af HTTP, ikke en erstatning.",
+            "D": "❌ HTTPS er ikke relateret til databaser."
+          }
+        }
+      ]
+    }
+  ]
+}

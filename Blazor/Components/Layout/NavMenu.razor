@@ -1,0 +1,53 @@
+﻿@inject NavigationManager Navigation
+
+<div class="sidebar">
+    <nav class="nav-menu">
+        <div class="nav-header">
+            <button @onclick="NavigateToHome" class="nav-brand">
+                <i class="fas fa-brain me-2"></i>Videnstjek
+            </button>
+        </div>
+        
+        <ul class="nav-list">
+            <li class="nav-item">
+                <button @onclick="NavigateToHome" class="nav-link">
+                    <i class="fas fa-home me-2"></i>Hjem
+                </button>
+            </li>
+            <li class="nav-item">
+                <button @onclick="NavigateToQuizzes" class="nav-link">
+                    <i class="fas fa-question-circle me-2"></i>Quiz
+                </button>
+            </li>
+            <li class="nav-item">
+                <button @onclick="NavigateToAdmin" class="nav-link">
+                    <i class="fas fa-cog me-2"></i>Admin
+                </button>
+            </li>
+            <li class="nav-item">
+                <button @onclick="NavigateToAbout" class="nav-link">
+                    <i class="fas fa-info-circle me-2"></i>Om
+                </button>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+@code {
+    private void NavigateToHome()
+    {
+        Navigation.NavigateTo("/");
+    }
+    private void NavigateToQuizzes()
+    {
+        Navigation.NavigateTo("/quizzes");
+    }
+    private void NavigateToAdmin()
+    {
+        Navigation.NavigateTo("/admin");
+    }
+    private void NavigateToAbout()
+    {
+        Navigation.NavigateTo("/about");
+    }
+}
