@@ -149,6 +149,26 @@ else
                                         }
                                     </div>
                                 </div>
+
+                                @if (question.LearnMore != null)
+                                {
+                                    <div class="learn-more mt-4 p-4 bg-gradient-light rounded">
+                                        <h5 class="text-success mb-3">
+                                            <i class="fas fa-graduation-cap me-2"></i>Læs mere om emnet
+                                        </h5>
+                                        <div class="learn-more-content">
+                                            <h6 class="text-dark mb-2">@question.LearnMore.Title</h6>
+                                            <p class="text-muted mb-3">@question.LearnMore.Description</p>
+                                            <a href="@question.LearnMore.Url" 
+                                               target="_blank" 
+                                               rel="noopener noreferrer"
+                                               class="btn btn-outline-success">
+                                                <i class="@GetLearnMoreIcon(question.LearnMore.Type) me-2"></i>
+                                                @GetLearnMoreButtonText(question.LearnMore.Type)
+                                            </a>
+                                        </div>
+                                    </div>
+                                }
                             }
 
                             <div class="d-flex justify-content-between mt-4">
@@ -508,6 +528,28 @@ else
             "mellem" => "warning",
             "avanceret" => "danger",
             _ => "secondary"
+        };
+    }
+
+    private string GetLearnMoreIcon(string type)
+    {
+        return type.ToLower() switch
+        {
+            "article" => "fas fa-book-open",
+            "video" => "fas fa-video",
+            "website" => "fas fa-external-link-alt",
+            _ => "fas fa-info-circle"
+        };
+    }
+
+    private string GetLearnMoreButtonText(string type)
+    {
+        return type.ToLower() switch
+        {
+            "article" => "Læs artikel",
+            "video" => "Se video",
+            "website" => "Gå til hjemmeside",
+            _ => "Lær mere"
         };
     }
 }

@@ -23,6 +23,13 @@
             "B": "✅ Cookies – især HttpOnly – er sikre mod XSS og bruges ofte til refresh-tokens.",
             "C": "✅ localStorage/sessionStorage – nemme at bruge, men sårbare over for XSS.",
             "D": "❌ JWT er \"self-contained\" – ikke nødvendigt at gemme dem på serveren, medmindre man blacklister eller tracker tokens."
+          },
+          "learnMore": {
+            "title": "JWT Token Storage Best Practices",
+            "description": "Lær om de bedste måder at gemme JWT tokens på klienten, og hvilke sikkerhedsrisici du skal være opmærksom på.",
+            "url": "https://www.descope.com/blog/post/developer-guide-jwt-storage",
+            "type": "article",
+            "icon": "fas fa-book-open"
           }
         },
         {
@@ -91,6 +98,13 @@
               "B": "❌ Det er en bivirkning, men ikke den primære sikkerhedsfordel.",
               "C": "❌ Tokenstørrelsen ændres ikke.",
               "D": "❌ Tokens skal altid være signeret."
+            },
+            "learnMore": {
+              "title": "Refresh Token Rotation",
+              "description": "Læs denne artiekl fra Auth0 om refresh tokens",
+              "url": "https://auth0.com/docs/secure/tokens/refresh-tokens/refresh-token-rotation",
+              "type": "article",
+              "icon": "fas fa-book-open"
             }
           },
           {
@@ -108,6 +122,13 @@
               "B": "❌ Claims-validering påvirker ikke størrelsen.",
               "C": "❌ Har intet med SQL injection at gøre.",
               "D": "❌ Validering tager ubetydelig tid og er ikke årsagen."
+            },
+            "learnMore": {
+              "title": "JWT Audience and Issuer claims",
+              "description": "Læs denne oficielle RFC fra IETF om JWT claims specielt omkring audience og issuer",
+              "url": "https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.1",
+              "type": "article",
+              "icon": "fas fa-book-open"
             }
           },
           {

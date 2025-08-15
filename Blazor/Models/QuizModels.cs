@@ -30,5 +30,17 @@ namespace Blazor.Models
         
         // Mapping from shuffled keys to original keys for validation
         public Dictionary<string, string> ShuffledToOriginalMapping { get; set; } = new();
+        
+        // Optional learning resource
+        public LearnMore? LearnMore { get; set; }
+    }
+
+    public class LearnMore
+    {
+        public string Title { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string Url { get; set; } = "";
+        public string Type { get; set; } = ""; // "article", "video", "document", etc.
+        public string? Icon { get; set; } = ""; // FontAwesome icon class
     }
 }

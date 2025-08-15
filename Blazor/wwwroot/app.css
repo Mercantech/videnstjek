@@ -344,6 +344,36 @@ body {
     line-height: 1.8;
 }
 
+/* Learn More Section */
+.learn-more {
+    border-left: 4px solid var(--success-color);
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    border: 1px solid #bbf7d0;
+}
+
+.learn-more h5 {
+    color: var(--success-color);
+}
+
+.learn-more-content h6 {
+    color: var(--dark-text);
+    font-weight: 600;
+}
+
+.learn-more .btn-outline-success {
+    border-color: var(--success-color);
+    color: var(--success-color);
+    transition: all 0.3s ease;
+}
+
+.learn-more .btn-outline-success:hover {
+    background: var(--success-color);
+    border-color: var(--success-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
 /* Results */
 .results-card {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -769,6 +799,15 @@ body {
     .status-badge {
         font-size: 0.75rem;
         padding: 0.2rem 0.6rem;
+    }
+    
+    .learn-more {
+        padding: 1rem;
+    }
+    
+    .learn-more .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
     }
 }
 
