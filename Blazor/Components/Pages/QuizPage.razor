@@ -52,15 +52,25 @@ else
                         <div class="card-body p-5">
                             <h3 class="card-title mb-4">@question.QuestionText</h3>
                             
+                            <div class="answer-info mb-3">
+                                <div class="alert alert-info d-flex align-items-center" role="alert">
+                                    <i class="fas fa-info-circle me-2"></i>
+                                    <strong>Vælg præcis @question.ExpectedAnswerCount svar@(question.ExpectedAnswerCount == 1 ? "" : "er")</strong>
+                                </div>
+                            </div>
+                            
                             <div class="options-container">
-                                @foreach (var option in question.Options)
+                                @foreach (var option in question.ShuffledOptions)
                                 {
                                     var isSelected = selectedAnswers.Contains(option.Key);
-                                    var isCorrect = question.CorrectAnswers.Contains(option.Key);
+                                    var originalKey = question.ShuffledToOriginalMapping[option.Key];
+                                    var isCorrect = question.CorrectAnswers.Contains(originalKey);
                                     var showResult = quizCompleted;
+                                    var isDisabled = !isSelected && selectedAnswers.Count >= question.ExpectedAnswerCount;
                                     
                                     <div class="option-item @(isSelected ? "selected" : "") 
-                                         @(showResult ? (isCorrect ? "correct" : (isSelected && !isCorrect ? "incorrect" : "")) : "")"
+                                         @(showResult ? (isCorrect ? "correct" : (isSelected && !isCorrect ? "incorrect" : "")) : "")
+                                         @(isDisabled ? "disabled" : "")"
                                          @onclick="() => SelectAnswer(option.Key)">
                                         <div class="option-content">
                                             <span class="option-letter">@option.Key)</span>
@@ -81,6 +91,25 @@ else
                                 }
                             </div>
 
+                            <div class="selection-status mb-3">
+                                <small class="text-muted">
+                                    @if (selectedAnswers.Count == question.ExpectedAnswerCount)
+                                    {
+                                        <span class="text-success">
+                                            <i class="fas fa-check-circle me-1"></i>
+                                            Du har valgt det korrekte antal svar
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-info">
+                                            <i class="fas fa-info-circle me-1"></i>
+                                            Du har valgt @selectedAnswers.Count af @question.ExpectedAnswerCount svar
+                                        </span>
+                                    }
+                                </small>
+                            </div>
+
                             @if (quizCompleted)
                             {
                                 <div class="explanation mt-4 p-4 bg-light rounded">
@@ -89,13 +118,33 @@ else
                                     </h5>
                                     <div class="mb-3">
                                         <strong>Korrekte svar:</strong> 
-                                        @string.Join(", ", question.CorrectAnswers.Select(a => a + ")"))
+                                        @{
+                                            var correctShuffledKeys = question.CorrectAnswers
+                                                .Select(originalKey => question.ShuffledToOriginalMapping
+                                                    .FirstOrDefault(x => x.Value == originalKey).Key)
+                                                .Where(key => !string.IsNullOrEmpty(key))
+                                                .OrderBy(key => key); // Sort by A, B, C, D
+                                        }
+                                        @string.Join(", ", correctShuffledKeys.Select(a => a + ")"))
                                     </div>
                                     <div class="explanation-text">
-                                        @foreach (var explanation in question.Explanations)
+                                        @{
+                                            // Sort explanations by shuffled keys (A, B, C, D order)
+                                            var sortedExplanations = question.Explanations
+                                                .Select(kvp => new
+                                                {
+                                                    OriginalKey = kvp.Key,
+                                                    Explanation = kvp.Value,
+                                                    ShuffledKey = question.ShuffledToOriginalMapping
+                                                        .FirstOrDefault(x => x.Value == kvp.Key).Key
+                                                })
+                                                .Where(x => !string.IsNullOrEmpty(x.ShuffledKey))
+                                                .OrderBy(x => x.ShuffledKey); // Sort by A, B, C, D
+                                        }
+                                        @foreach (var explanation in sortedExplanations)
                                         {
                                             <div class="mb-2">
-                                                <strong>@explanation.Key):</strong> @explanation.Value
+                                                <strong>@explanation.ShuffledKey):</strong> @explanation.Explanation
                                             </div>
                                         }
                                     </div>
@@ -116,7 +165,8 @@ else
 
                                 @if (!quizCompleted)
                                 {
-                                    <button class="btn btn-primary" @onclick="SubmitAnswer" disabled="@(selectedAnswers.Count == 0)">
+                                    <button class="btn btn-primary" @onclick="SubmitAnswer" 
+                                            disabled="@(selectedAnswers.Count != currentQuiz.Questions[currentQuestionIndex].ExpectedAnswerCount)">
                                         <i class="fas fa-check me-2"></i>Bekræft svar
                                     </button>
                                 }
@@ -126,9 +176,9 @@ else
                                         Næste<i class="fas fa-arrow-right ms-2"></i>
                                     </button>
                                 }
-                                else
+                                else if (currentQuestionIndex == currentQuiz.Questions.Count - 1 && !showFinalResults)
                                 {
-                                    <button class="btn btn-success" @onclick="FinishQuiz">
+                                    <button class="btn btn-success" @onclick="ShowFinalResults">
                                         <i class="fas fa-trophy me-2"></i>Afslut quiz
                                     </button>
                                 }
@@ -137,36 +187,36 @@ else
                     </div>
                 }
 
-                @if (quizCompleted && currentQuestionIndex >= currentQuiz.Questions.Count - 1)
+                @if (quizCompleted && currentQuestionIndex >= currentQuiz.Questions.Count - 1 && showFinalResults)
                 {
                     <div class="quiz-completion-overlay">
                         <div class="results-card card shadow-lg border-0">
-                            <div class="card-body p-5 text-center">
+                            <div class="card-body p-4">
                                 <div class="result-icon mb-4">
                                     @if (score >= currentQuiz.Questions.Count * 0.8)
                                     {
                                         <div class="achievement-badge trophy">
-                                            <i class="fas fa-trophy fa-5x text-warning"></i>
+                                            <i class="fas fa-trophy fa-4x text-warning"></i>
                                             <div class="achievement-text">Ekspert!</div>
                                         </div>
                                     }
                                     else if (score >= currentQuiz.Questions.Count * 0.6)
                                     {
                                         <div class="achievement-badge medal">
-                                            <i class="fas fa-medal fa-5x text-success"></i>
+                                            <i class="fas fa-medal fa-4x text-success"></i>
                                             <div class="achievement-text">Godt gået!</div>
                                         </div>
                                     }
                                     else
                                     {
                                         <div class="achievement-badge lightbulb">
-                                            <i class="fas fa-lightbulb fa-5x text-info"></i>
+                                            <i class="fas fa-lightbulb fa-4x text-info"></i>
                                             <div class="achievement-text">Læring!</div>
                                         </div>
                                     }
                                 </div>
                                 
-                                <h1 class="display-4 fw-bold text-primary mb-3">Quiz Gennemført! 🎉</h1>
+                                <h1 class="display-5 fw-bold text-primary mb-3">Quiz Gennemført! 🎉</h1>
                                 
                                 <div class="score-display mb-4">
                                     <div class="score-circle">
@@ -179,7 +229,7 @@ else
                                 </div>
                                 
                                 <div class="score-message mb-4">
-                                    <p class="lead fs-4">@GetScoreMessage()</p>
+                                    <p class="lead fs-5">@GetScoreMessage()</p>
                                 </div>
                                 
                                 <div class="questions-overview mb-4">
@@ -257,6 +307,7 @@ else
     private bool quizCompleted = false;
     private int score = 0;
     private List<bool> questionScores = new();
+    private bool showFinalResults = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -282,23 +333,41 @@ else
     {
         if (quizCompleted || currentQuiz == null) return;
 
+        var currentQuestion = currentQuiz.Questions[currentQuestionIndex];
+        
         if (selectedAnswers.Contains(option))
         {
             selectedAnswers.Remove(option);
         }
         else
         {
-            selectedAnswers.Add(option);
+            // Kun tillad at vælge hvis vi ikke har nået det maksimale antal
+            if (selectedAnswers.Count < currentQuestion.ExpectedAnswerCount)
+            {
+                selectedAnswers.Add(option);
+            }
         }
     }
 
     private void SubmitAnswer()
     {
-        if (selectedAnswers.Count == 0 || currentQuiz == null) return;
-
+        if (currentQuiz == null) return;
+        
         var currentQuestion = currentQuiz.Questions[currentQuestionIndex];
-        var isCorrect = currentQuestion.CorrectAnswers.All(a => selectedAnswers.Contains(a)) &&
-                       selectedAnswers.All(a => currentQuestion.CorrectAnswers.Contains(a));
+        
+        // Kun tillad svar hvis præcis det forventede antal er valgt
+        if (selectedAnswers.Count != currentQuestion.ExpectedAnswerCount)
+        {
+            return;
+        }
+
+        // Konverter shuffled keys tilbage til originale keys for validering
+        var originalSelectedAnswers = selectedAnswers
+            .Select(shuffledKey => currentQuestion.ShuffledToOriginalMapping[shuffledKey])
+            .ToList();
+
+        var isCorrect = currentQuestion.CorrectAnswers.All(a => originalSelectedAnswers.Contains(a)) &&
+                       originalSelectedAnswers.All(a => currentQuestion.CorrectAnswers.Contains(a));
 
         if (isCorrect)
         {
@@ -325,6 +394,10 @@ else
             currentQuestionIndex++;
             selectedAnswers.Clear();
             quizCompleted = false;
+            
+            // Reshuffle options for the new question
+            var nextQuestion = currentQuiz.Questions[currentQuestionIndex];
+            ReshuffleQuestionOptions(nextQuestion);
         }
     }
 
@@ -335,6 +408,10 @@ else
             currentQuestionIndex--;
             selectedAnswers.Clear();
             quizCompleted = false;
+            
+            // Reshuffle options for the previous question
+            var previousQuestion = currentQuiz.Questions[currentQuestionIndex];
+            ReshuffleQuestionOptions(previousQuestion);
         }
     }
 
@@ -345,11 +422,58 @@ else
         quizCompleted = false;
         score = 0;
         questionScores.Clear();
+        showFinalResults = false;
+        
+        // Reshuffle options for a fresh experience
+        if (currentQuiz != null)
+        {
+            foreach (var question in currentQuiz.Questions)
+            {
+                ReshuffleQuestionOptions(question);
+            }
+        }
+    }
+
+    private void ReshuffleQuestionOptions(QuizQuestion question)
+    {
+        // Create a list of option pairs to shuffle
+        var optionPairs = question.Options.ToList();
+        var random = new Random();
+        
+        // Shuffle the pairs
+        for (int i = optionPairs.Count - 1; i > 0; i--)
+        {
+            int j = random.Next(i + 1);
+            var temp = optionPairs[i];
+            optionPairs[i] = optionPairs[j];
+            optionPairs[j] = temp;
+        }
+
+        // Create new shuffled options with new keys (A, B, C, D...)
+        question.ShuffledOptions.Clear();
+        question.ShuffledToOriginalMapping.Clear();
+        
+        var newKeys = new[] { "A", "B", "C", "D", "E", "F" }; // Support for up to 6 options
+        
+        for (int i = 0; i < optionPairs.Count; i++)
+        {
+            var newKey = newKeys[i];
+            var originalKey = optionPairs[i].Key;
+            var optionText = optionPairs[i].Value;
+            
+            question.ShuffledOptions[newKey] = optionText;
+            question.ShuffledToOriginalMapping[newKey] = originalKey;
+        }
     }
 
     private void FinishQuiz()
     {
         quizCompleted = true;
+    }
+
+    private void ShowFinalResults()
+    {
+        showFinalResults = true;
     }
 
     private void GoToQuizList()

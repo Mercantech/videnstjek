@@ -75,7 +75,79 @@
             "C": "❌ Ingen refresh tokens = brugeren skal logge ind manuelt efter udløb.",
             "D": "❌ Klientlagring uden servervalidering tillader ikke serverkontrol eller udlogning."
           }
-        }
+        },
+        {
+            "id": 5,
+            "questionText": "Hvad er den største sikkerhedsmæssige fordel ved token-rotation med refresh-tokens?",
+            "options": {
+              "A": "Det forhindrer replay-angreb ved at gøre gamle refresh-tokens ugyldige efter brug",
+              "B": "Det øger tokenets levetid uden at kræve nyt login",
+              "C": "Det gør JWT mindre i størrelse",
+              "D": "Det tillader brug af tokens uden signatur"
+            },
+            "correctAnswers": ["A"],
+            "explanations": {
+              "A": "✅ Rotation sikrer, at stjålne refresh-tokens bliver ubrugelige, fordi de ugyldiggøres efter brug.",
+              "B": "❌ Det er en bivirkning, men ikke den primære sikkerhedsfordel.",
+              "C": "❌ Tokenstørrelsen ændres ikke.",
+              "D": "❌ Tokens skal altid være signeret."
+            }
+          },
+          {
+            "id": 6,
+            "questionText": "Hvorfor skal man validere både 'audience' (aud) og 'issuer' (iss) claims i et JWT?",
+            "options": {
+              "A": "For at sikre, at tokenet er udstedt til og af den rigtige tjeneste",
+              "B": "For at reducere tokenets størrelse",
+              "C": "For at forhindre SQL injection",
+              "D": "For at gøre tokenet hurtigere at validere"
+            },
+            "correctAnswers": ["A"],
+            "explanations": {
+              "A": "✅ Sørger for, at tokenet både er tiltænkt vores app (aud) og udstedt af en pålidelig kilde (iss).",
+              "B": "❌ Claims-validering påvirker ikke størrelsen.",
+              "C": "❌ Har intet med SQL injection at gøre.",
+              "D": "❌ Validering tager ubetydelig tid og er ikke årsagen."
+            }
+          },
+          {
+            "id": 7,
+            "questionText": "Hvad er den vigtigste forskel mellem HS256 og RS256 i JWT-signaturer?",
+            "options": {
+              "A": "HS256 bruger symmetrisk nøgle, RS256 asymmetrisk",
+              "B": "RS256 giver altid bedre performance end HS256",
+              "C": "HS256 kan ikke bruges sikkert",
+              "D": "RS256 kræver ikke nogen nøgler"
+            },
+            "correctAnswers": ["A"],
+            "explanations": {
+              "A": "✅ HS256 bruger én delt hemmelig nøgle, mens RS256 bruger privat/offentlig nøglepar.",
+              "B": "❌ RS256 er ofte langsommere pga. asymmetrisk kryptografi.",
+              "C": "❌ HS256 kan bruges sikkert, hvis nøglen holdes hemmelig.",
+              "D": "❌ RS256 kræver både privat og offentlig nøgle."
+            }
+          },
+          {
+            "id": 8,
+            "questionText": "Hvad er den mest effektive metode mod replay-angreb med JWT?",
+            "options": {
+              "A": "Token-rotation",
+              "B": "Længere levetid på access tokens",
+              "C": "Gem token i localStorage",
+              "D": "Brug af HS256"
+            },
+            "correctAnswers": ["A"],
+            "explanations": {
+              "A": "✅ Rotation sikrer, at et stjålet token kun kan bruges én gang, hvorefter det ugyldiggøres.",
+              "B": "❌ Længere levetid øger risikoen ved et stjålet token.",
+              "C": "❌ LocalStorage beskytter ikke mod replay-angreb.",
+              "D": "❌ Valg af algoritme alene forhindrer ikke replay-angreb."
+            }
+          }
+          
+          
+          
+          
       ]
     },
     {

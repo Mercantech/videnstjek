@@ -286,6 +286,19 @@ body {
     color: white;
 }
 
+.option-item.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+}
+
+.option-item.disabled:hover {
+    border-color: #cbd5e1;
+    background: #f1f5f9;
+    transform: none;
+}
+
 .option-content {
     display: flex;
     align-items: center;
@@ -300,6 +313,26 @@ body {
 
 .option-text {
     flex: 1;
+}
+
+/* Answer Info and Selection Status */
+.answer-info .alert {
+    border-radius: var(--border-radius);
+    border: none;
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    color: #1e40af;
+}
+
+.selection-status {
+    text-align: center;
+}
+
+.selection-status .text-success {
+    color: var(--success-color) !important;
+}
+
+.selection-status .text-info {
+    color: var(--info-color) !important;
 }
 
 /* Explanation */
@@ -401,18 +434,20 @@ body {
     align-items: center;
     justify-content: center;
     z-index: 1050;
-    padding: 2rem;
+    padding: 1rem;
     animation: fadeInScale 0.6s ease-out;
 }
 
 .quiz-completion-overlay .results-card {
-    max-width: 800px;
+    max-width: 700px;
     width: 100%;
     background: white;
     border-radius: 20px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
     transform: scale(1);
     animation: slideInUp 0.8s ease-out;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .achievement-badge {
@@ -442,7 +477,7 @@ body {
     display: inline-block;
     background: linear-gradient(135deg, var(--primary-color), var(--info-color));
     color: white;
-    padding: 2rem 3rem;
+    padding: 1.5rem 2.5rem;
     border-radius: 50%;
     margin-bottom: 1rem;
     box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
@@ -450,14 +485,14 @@ body {
 }
 
 .score-number {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: bold;
     display: block;
     line-height: 1;
 }
 
 .score-total {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     opacity: 0.9;
 }
 
@@ -682,24 +717,25 @@ body {
     }
     
     .quiz-completion-overlay {
-        padding: 1rem;
+        padding: 0.5rem;
     }
     
     .quiz-completion-overlay .results-card {
         max-width: 95%;
         margin: 0 auto;
+        max-height: 95vh;
     }
     
     .score-circle {
-        padding: 1.5rem 2rem;
+        padding: 1rem 1.5rem;
     }
     
     .score-number {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
     
     .score-total {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
     
     .action-buttons .btn {

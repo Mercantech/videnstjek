@@ -23,5 +23,12 @@ namespace Blazor.Models
         public Dictionary<string, string> Options { get; set; } = new();
         public List<string> CorrectAnswers { get; set; } = new();
         public Dictionary<string, string> Explanations { get; set; } = new();
+        public int ExpectedAnswerCount => CorrectAnswers.Count;
+        
+        // Shuffled options for display
+        public Dictionary<string, string> ShuffledOptions { get; set; } = new();
+        
+        // Mapping from shuffled keys to original keys for validation
+        public Dictionary<string, string> ShuffledToOriginalMapping { get; set; } = new();
     }
 }
