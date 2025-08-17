@@ -172,48 +172,525 @@
       ]
     },
     {
-      "id": "web-security",
-      "title": "Web Sikkerhed Grundlæggende",
-      "description": "Lær om de vigtigste sikkerhedsbegreber inden for webudvikling",
-      "category": "Sikkerhed",
-      "difficulty": "Begynder",
-      "estimatedTime": "8-12 minutter",
+      "id": "api-calls",
+      "title": "API-kald & HTTP",
+      "description": "Test din viden om API-kald, HTTP-metoder, statuskoder og sikker kommunikation med HTTPS",
+      "category": "Webudvikling",
+      "difficulty": "Mellem",
+      "estimatedTime": "10-15 minutter",
       "questions": [
         {
           "id": 1,
-          "questionText": "Hvad er XSS (Cross-Site Scripting)?",
+          "questionText": "Hvilken HTTP-metode bruges typisk til at hente data fra en server?",
           "options": {
-            "A": "En type database angreb",
-            "B": "Et angreb hvor skadelig kode indsættes i websteder",
-            "C": "En type phishing angreb",
-            "D": "Et angreb på server infrastruktur"
+            "A": "POST",
+            "B": "GET",
+            "C": "PUT",
+            "D": "DELETE"
           },
           "correctAnswers": ["B"],
           "explanations": {
-            "A": "❌ XSS handler ikke om databaser direkte.",
-            "B": "✅ XSS er et angreb hvor skadelig JavaScript kode indsættes i websteder.",
-            "C": "❌ Phishing er et separat sikkerhedsproblem.",
-            "D": "❌ XSS fokuserer på klient-side, ikke server infrastruktur."
+            "A": "❌ POST bruges til at oprette nye ressourcer.",
+            "B": "✅ GET bruges til at hente data og ændrer ikke noget på serveren.",
+            "C": "❌ PUT bruges til at opdatere eksisterende data.",
+            "D": "❌ DELETE bruges til at slette data."
+          },
+          "learnMore": {
+            "title": "HTTP Methods Explained",
+            "description": "Læs om de mest brugte HTTP-metoder og hvordan de bruges i REST API'er.",
+            "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods",
+            "type": "article",
+            "icon": "fas fa-book-open"
           }
         },
         {
           "id": 2,
-          "questionText": "Hvad er HTTPS?",
+          "questionText": "Hvilken statuskode returneres typisk når en ressource oprettes succesfuldt?",
           "options": {
-            "A": "En hurtigere version af HTTP",
-            "B": "HTTP med kryptering (TLS/SSL)",
-            "C": "En ny protokol der erstatter HTTP",
-            "D": "En type database protokol"
+            "A": "200 OK",
+            "B": "201 Created",
+            "C": "204 No Content",
+            "D": "404 Not Found"
           },
           "correctAnswers": ["B"],
           "explanations": {
-            "A": "❌ HTTPS er ikke nødvendigvis hurtigere end HTTP.",
-            "B": "✅ HTTPS er HTTP med TLS/SSL kryptering for sikker kommunikation.",
-            "C": "❌ HTTPS er en udvidelse af HTTP, ikke en erstatning.",
-            "D": "❌ HTTPS er ikke relateret til databaser."
+            "A": "❌ 200 OK betyder succes, men bruges mest til GET.",
+            "B": "✅ 201 Created er korrekt, når en ny ressource oprettes.",
+            "C": "❌ 204 No Content bruges når en operation lykkes men intet returneres.",
+            "D": "❌ 404 betyder at ressourcen ikke findes."
+          }
+        },
+        {
+          "id": 3,
+          "questionText": "Hvorfor er HTTPS mere sikker end HTTP?",
+          "options": {
+            "A": "Fordi den er hurtigere",
+            "B": "Fordi data krypteres mellem klient og server",
+            "C": "Fordi den bruger færre statuskoder",
+            "D": "Fordi serveren altid svarer med 200 OK"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ HTTPS kan faktisk være en smule langsommere pga. kryptering.",
+            "B": "✅ HTTPS krypterer al data og verificerer serverens identitet.",
+            "C": "❌ Antallet af statuskoder er det samme.",
+            "D": "❌ Serveren kan stadig returnere fejlstatus under HTTPS."
+          },  
+          "learnMore": {
+            "title": "How HTTPS Works",
+            "description": "En introduktion til HTTPS og SSL/TLS handshake, skrevet af Cloudflare.",
+            "url": "https://www.cloudflare.com/learning/ssl/what-is-https/",
+            "type": "article",
+            "icon": "fas fa-lock"
+          }
+        },
+        {
+          "id": 4,
+          "questionText": "Hvilken af disse HTTP-metoder bruges til at opdatere en ressource delvist?",
+          "options": {
+            "A": "PUT",
+            "B": "PATCH",
+            "C": "POST",
+            "D": "OPTIONS"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ PUT opdaterer hele ressourcen, ikke dele af den.",
+            "B": "✅ PATCH bruges til at ændre specifikke felter i en ressource.",
+            "C": "❌ POST bruges til at oprette nye ressourcer.",
+            "D": "❌ OPTIONS bruges til at se hvilke metoder serveren understøtter."
+          }
+        },
+        {
+          "id": 5,
+          "questionText": "Hvad betyder statuskoden 401 Unauthorized?",
+          "options": {
+            "A": "Brugeren er ikke logget ind eller mangler gyldige credentials",
+            "B": "Serveren er gået ned",
+            "C": "Ressourcen findes ikke",
+            "D": "Du har ikke tilladelse, selvom du er logget ind"
+          },
+          "correctAnswers": ["A"],
+          "explanations": {
+            "A": "✅ 401 betyder at du mangler gyldig login eller token.",
+            "B": "❌ Det ville være en 5xx serverfejl.",
+            "C": "❌ Det ville være 404 Not Found.",
+            "D": "❌ Det ville være 403 Forbidden."
+          }
+        },    
+        {
+          "id": 6,
+          "questionText": "Hvad betyder statuskoden 204 No Content?",
+          "options": {
+            "A": "Operationen lykkedes, men der er ingen data at returnere",
+            "B": "Serveren er midlertidigt nede",
+            "C": "Din forespørgsel var ugyldig",
+            "D": "En ny ressource blev oprettet"
+          },
+          "correctAnswers": ["A"],
+          "explanations": {
+            "A": "✅ 204 betyder at alt gik godt, men svaret er tomt.",
+            "B": "❌ Det ville være 503 Service Unavailable.",
+            "C": "❌ Det ville være 400 Bad Request.",
+            "D": "❌ Det ville være 201 Created."
+          }
+        },
+        {
+          "id": 7,
+          "questionText": "Hvilken HTTP-metode bruges til at spørge serveren hvilke metoder, den understøtter?",
+          "options": {
+            "A": "OPTIONS",
+            "B": "HEAD",
+            "C": "TRACE",
+            "D": "GET"
+          },
+          "correctAnswers": ["A"],
+          "explanations": {
+            "A": "✅ OPTIONS returnerer en liste over tilladte metoder.",
+            "B": "❌ HEAD returnerer kun headers – ikke metodeinfo.",
+            "C": "❌ TRACE bruges til fejlfinding.",
+            "D": "❌ GET henter data, men viser ikke understøttede metoder."
+          },
+          "learnMore": {
+            "title": "MDN: OPTIONS method",
+            "description": "Se hvordan OPTIONS-metoden bruges, og hvornår den er nyttig i API-kald.",
+            "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/OPTIONS",
+            "type": "docs",
+            "icon": "fas fa-info-circle"
+          }
+        },
+        {
+          "id": 8,
+          "questionText": "Hvordan fungerer HEAD-metoden?",
+          "options": {
+            "A": "Den henter hele ressourcen som GET",
+            "B": "Den henter kun headers uden selve indholdet",
+            "C": "Den opretter en ny ressource",
+            "D": "Den sletter ressourcen"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ GET henter hele ressourcen.",
+            "B": "✅ HEAD returnerer kun metadata (headers), ikke indholdet.",
+            "C": "❌ POST bruges til at oprette ressourcer.",
+            "D": "❌ DELETE bruges til at slette ressourcer."
+          }
+        },
+        {
+          "id": 9,
+          "questionText": "Hvad er det første trin i en HTTPS-forbindelse?",
+          "options": {
+            "A": "Serveren sender data krypteret",
+            "B": "Klient og server laver et handshake og aftaler kryptering",
+            "C": "Brugeren logger ind",
+            "D": "Serveren returnerer statuskode 200"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Data krypteres først efter handshake.",
+            "B": "✅ Handshake er første trin – her aftales kryptering.",
+            "C": "❌ Login kan ske senere, men er ikke en del af HTTPS-opstarten.",
+            "D": "❌ Statuskoder har intet at gøre med oprettelsen af krypteret forbindelse."
+          }
+        },
+        {
+          "id": 10,
+          "questionText": "Hvorfor favoriserer Google sider med HTTPS i søgeresultater?",
+          "options": {
+            "A": "Fordi de er hurtigere",
+            "B": "Fordi de har flere statuskoder",
+            "C": "Fordi de er mere sikre og øger brugertillid",
+            "D": "Fordi de altid returnerer JSON"
+          },
+          "correctAnswers": ["C"],
+          "explanations": {
+            "A": "❌ HTTPS kan være en anelse langsommere end HTTP.",
+            "B": "❌ Statuskoder er de samme uanset HTTP eller HTTPS.",
+            "C": "✅ Google vægter sikkerhed højt og belønner HTTPS-sider i SEO.",
+            "D": "❌ HTTPS har intet at gøre med dataformatet (JSON, XML osv.)."
+          }
+        }
+    
+      ]
+    },
+    {
+      "id": "oop-advanced",
+      "title": "Udvidet OOP & Trådprogrammering i C#",
+      "description": "Test din viden om delegates, asynkron programmering, thread safety og OOP-konceptet i C#",
+      "category": "C#",
+      "difficulty": "Mellem",
+      "estimatedTime": "10-15 minutter",
+      "questions": [
+        {
+          "id": 1,
+          "questionText": "Hvad kaldes en funktion pointer i C#, som kan referere til metoder?",
+          "options": {
+            "A": "Callback",
+            "B": "Delegate",
+            "C": "Lambda",
+            "D": "Interface"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ En callback er en metode, der kaldes efter en opgave – ofte via en delegate.",
+            "B": "✅ En delegate er en funktion pointer i C#, der kan referere til metoder.",
+            "C": "❌ Lambda er en kortfattet måde at skrive anonyme metoder på, men ikke selve typen.",
+            "D": "❌ Et interface definerer en kontrakt, ikke en funktion pointer."
+          },
+          "learnMore": {
+            "title": "Delegates in C#",
+            "description": "Microsofts dokumentation om delegates, hvordan de fungerer, og hvordan de bruges til callbacks.",
+            "url": "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/",
+            "type": "docs",
+            "icon": "fas fa-code"
+          }
+        },
+        {
+          "id": 2,
+          "questionText": "Hvad er forskellen på Thread og Task i moderne C#?",
+          "options": {
+            "A": "Thread er mere ressourceeffektiv end Task",
+            "B": "Task bruger ThreadPool internt og er lettere at arbejde med",
+            "C": "Task kan ikke køre parallelt",
+            "D": "Thread understøtter async/await"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Threads er tungere end Tasks.",
+            "B": "✅ Tasks er moderne, bruger ThreadPool internt og spiller godt med async/await.",
+            "C": "❌ Tasks kan køre parallelt, da de bruger flere tråde bagved.",
+            "D": "❌ async/await er designet til Task-baseret programmering, ikke Thread direkte."
+          },
+          "learnMore": {
+            "title": "Task-based Asynchronous Programming",
+            "description": "Læs om forskellen mellem Threads og Tasks i .NET og hvorfor Tasks er det anbefalede valg.",
+            "url": "https://learn.microsoft.com/en-us/dotnet/standard/parallel-programming/task-based-asynchronous-programming",
+            "type": "docs",
+            "icon": "fas fa-tasks"
+          }
+        },
+        {
+          "id": 3,
+          "questionText": "Hvad er en race condition?",
+          "options": {
+            "A": "Når en variabel ændres af flere tråde samtidigt og giver uforudsigelige resultater",
+            "B": "Når en tråd kører hurtigere end en anden",
+            "C": "Når to tråde konkurrerer om CPU-tid",
+            "D": "Når en tråd er i sleep-tilstand"
+          },
+          "correctAnswers": ["A"],
+          "explanations": {
+            "A": "✅ En race condition opstår når flere tråde tilgår samme variabel samtidigt uden synkronisering.",
+            "B": "❌ Hastighedsforskelle er ikke det samme som race conditions.",
+            "C": "❌ CPU-planlægning er normalt, men ikke en race condition.",
+            "D": "❌ Sleep handler blot om at en tråd venter."
+          }
+        },
+        {
+          "id": 4,
+          "questionText": "Hvilken teknik sikrer at kun én tråd ad gangen kan udføre en kritisk sektion?",
+          "options": {
+            "A": "await",
+            "B": "lock",
+            "C": "volatile",
+            "D": "continue"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ await handler om asynkron programmering, ikke låsning.",
+            "B": "✅ lock sikrer at kun én tråd kan køre koden ad gangen.",
+            "C": "❌ volatile sikrer kun at en variabel altid læses fra hovedhukommelsen.",
+            "D": "❌ continue bruges i loops, ikke trådsynkronisering."
+          },
+          "learnMore": {
+            "title": "lock statement in C#",
+            "description": "Microsofts dokumentation om lock og trådsynkronisering i C#.",
+            "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/lock",
+            "type": "docs",
+            "icon": "fas fa-lock"
+          }
+        },
+        {
+          "id": 5,
+          "questionText": "Hvad gør Interlocked.Increment(ref counter)?",
+          "options": {
+            "A": "Øger counter sikkert og atomisk, selv med flere tråde",
+            "B": "Øger counter, men kan give race conditions",
+            "C": "Låser hele programmet indtil counter er øget",
+            "D": "Kan kun bruges i async/await-metoder"
+          },
+          "correctAnswers": ["A"],
+          "explanations": {
+            "A": "✅ Interlocked.Increment udfører en atomisk operation uden behov for lock.",
+            "B": "❌ Netop pointen er at undgå race conditions.",
+            "C": "❌ Programmet låses ikke, kun operationen er atomisk.",
+            "D": "❌ Interlocked kan bruges uafhængigt af async/await."
+          },
+          "learnMore": {
+            "title": "Interlocked Class",
+            "description": "Dokumentation for Interlocked-klassen i .NET, inkl. atomiske operationer.",
+            "url": "https://learn.microsoft.com/en-us/dotnet/api/system.threading.interlocked",
+            "type": "docs",
+            "icon": "fas fa-microchip"
+          }
+        },
+        {
+          "id": 6,
+          "questionText": "Hvorfor kan man ikke bare bruge Threads i Blazor WebAssembly?",
+          "options": {
+            "A": "Fordi Threads ikke findes i C#",
+            "B": "Fordi browseren kun tillader én UI-tråd",
+            "C": "Fordi async/await ikke er understøttet i Blazor",
+            "D": "Fordi det er for langsomt"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Threads findes i C#, men ikke alle platforme understøtter dem.",
+            "B": "✅ Browseren kører Blazor WASM med én UI-tråd, så man må bruge async/await i stedet.",
+            "C": "❌ async/await er netop den anbefalede tilgang i Blazor.",
+            "D": "❌ Hastighed er ikke hovedårsagen."
+          },
+          "learnMore": {
+            "title": "Async programming in Blazor WebAssembly",
+            "description": "Forklaring på hvorfor async/await er den rigtige tilgang i Blazor WASM.",
+            "url": "https://learn.microsoft.com/en-us/aspnet/core/blazor/fundamentals/synchronous?view=aspnetcore-8.0",
+            "type": "docs",
+            "icon": "fas fa-globe"
+          }
+        },
+        {
+          "id": 7,
+          "questionText": "Hvad er forskellen på async/await og parallelle tråde?",
+          "options": {
+            "A": "async/await bruges til I/O-ventetid, mens tråde bruges til CPU-arbejde",
+            "B": "async/await opretter altid nye tråde",
+            "C": "Tråde kan kun bruges i konsolprogrammer",
+            "D": "De er det samme i C#"
+          },
+          "correctAnswers": ["A"],
+          "explanations": {
+            "A": "✅ async/await er perfekt til I/O, mens tråde bruges til CPU-tunge operationer.",
+            "B": "❌ async/await bruger ikke altid nye tråde – ofte kører det på samme tråd.",
+            "C": "❌ Tråde kan bruges i mange typer programmer.",
+            "D": "❌ De er fundamentalt forskellige koncepter."
+          }
+        },
+        {
+          "id": 8,
+          "questionText": "Hvad betyder det at en metode i en baseklasse er markeret som abstract?",
+          "options": {
+            "A": "At metoden kan kaldes direkte fra baseklassen",
+            "B": "At metoden skal implementeres i en afledt klasse",
+            "C": "At metoden er skjult for andre klasser",
+            "D": "At metoden kører hurtigere end en normal metode"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Abstrakte metoder kan ikke kaldes direkte.",
+            "B": "✅ Abstrakte metoder er en kontrakt, der SKAL implementeres i afledte klasser.",
+            "C": "❌ Access modifiers styrer synlighed, ikke abstract.",
+            "D": "❌ Abstract har intet med performance at gøre."
+          },
+          "learnMore": {
+            "title": "Abstract Classes and Methods",
+            "description": "Microsofts docs om abstrakte klasser og metoder i C#.",
+            "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/abstract",
+            "type": "docs",
+            "icon": "fas fa-book-open"
+          }
+        }
+      ]
+    },
+    {
+      "id": "error-handling",
+      "title": "Error Handling i C#",
+      "description": "Test din viden om fejlhåndtering i C# og API-kommunikation",
+      "category": "C#",
+      "difficulty": "Mellem",
+      "estimatedTime": "10-15 minutter",
+      "questions": [
+        {
+          "id": 1,
+          "questionText": "Hvorfor er det en god idé at fange specifikke exceptions før den generelle Exception?",
+          "options": {
+            "A": "Fordi specifikke exceptions giver bedre kontrol og mere præcise fejlbeskeder",
+            "B": "Fordi det gør programmet hurtigere",
+            "C": "Fordi C# kræver det",
+            "D": "Fordi Exception ikke kan fanges"
+          },
+          "correctAnswers": ["A"],
+          "explanations": {
+            "A": "✅ At fange specifikke exceptions gør koden mere robust og giver præcis fejlhåndtering.",
+            "B": "❌ Hastighed er ikke hovedpointen.",
+            "C": "❌ Det er god praksis, men ikke et krav i sproget.",
+            "D": "❌ Exception kan altid fanges, men bør være sidste resort."
+          },
+          "learnMore": {
+            "title": "try-catch i C#",
+            "description": "Microsoft dokumentation om brugen af try-catch til at fange exceptions.",
+            "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/try-catch",
+            "type": "docs",
+            "icon": "fas fa-code"
+          }
+        },
+        {
+          "id": 2,
+          "questionText": "Hvad er fordelen ved at definere en custom exception (f.eks. ApiException)?",
+          "options": {
+            "A": "De er hurtigere at køre",
+            "B": "De kan inkludere ekstra information og gøre fejlhåndtering mere specifik",
+            "C": "De forhindrer alle fejl i at ske",
+            "D": "De erstatter behovet for try-catch"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Performance er ikke forskellen.",
+            "B": "✅ Custom exceptions kan bære ekstra data som statuskoder og gør koden mere læsbar.",
+            "C": "❌ Exceptions forhindrer ikke fejl i at ske – de hjælper med at håndtere dem.",
+            "D": "❌ Du skal stadig bruge try-catch."
+          },
+          "learnMore": {
+            "title": "How to create custom exceptions",
+            "description": "Microsofts guide til at lave dine egne exception klasser.",
+            "url": "https://learn.microsoft.com/en-us/dotnet/standard/exceptions/how-to-create-user-defined-exceptions",
+            "type": "docs",
+            "icon": "fas fa-tools"
+          }
+        },
+        {
+          "id": 3,
+          "questionText": "Hvilken exception-type fanges typisk ved netværksfejl i HttpClient?",
+          "options": {
+            "A": "InvalidOperationException",
+            "B": "JsonException",
+            "C": "HttpRequestException",
+            "D": "IOException"
+          },
+          "correctAnswers": ["C"],
+          "explanations": {
+            "A": "❌ InvalidOperationException handler om ugyldig brug af API’et.",
+            "B": "❌ JsonException bruges til fejl i serialisering/deserialisering.",
+            "C": "✅ HttpRequestException er den korrekte exception for netværksfejl.",
+            "D": "❌ IOException bruges til fil- og stream-fejl."
+          },
+          "learnMore": {
+            "title": "HttpRequestException Class",
+            "description": "Dokumentation om HttpRequestException og hvornår den bruges.",
+            "url": "https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception",
+            "type": "docs",
+            "icon": "fas fa-network-wired"
+          }
+        },
+        {
+          "id": 4,
+          "questionText": "Hvad betyder statuskoden 429 Too Many Requests?",
+          "options": {
+            "A": "Brugeren mangler authentication",
+            "B": "Serveren er nede midlertidigt",
+            "C": "Der er sendt for mange requests på kort tid",
+            "D": "Serverens gateway er fejlkonfigureret"
+          },
+          "correctAnswers": ["C"],
+          "explanations": {
+            "A": "❌ Det ville være 401 Unauthorized.",
+            "B": "❌ Det ville være 503 Service Unavailable.",
+            "C": "✅ 429 betyder at klienten har overskredet serverens rate limit.",
+            "D": "❌ Det ville være 502 Bad Gateway."
+          },
+          "learnMore": {
+            "title": "HTTP 429 Too Many Requests",
+            "description": "MDN-dokumentation om statuskoden 429 og rate limiting.",
+            "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+            "type": "docs",
+            "icon": "fas fa-exclamation-triangle"
+          }
+        },
+        {
+          "id": 5,
+          "questionText": "Hvad er exponential backoff i forbindelse med API error handling?",
+          "options": {
+            "A": "At prøve igen med gradvist længere pauser mellem forsøg",
+            "B": "At køre alle retries samtidigt",
+            "C": "At give op efter første fejl",
+            "D": "At ignorere serverens fejlbeskeder"
+          },
+          "correctAnswers": ["A"],
+          "explanations": {
+            "A": "✅ Exponential backoff betyder at man venter 1s, 2s, 4s, 8s osv. mellem retries.",
+            "B": "❌ Det ville overbelaste serveren yderligere.",
+            "C": "❌ Det fjerner robustheden i systemet.",
+            "D": "❌ At ignorere fejl giver dårlig brugeroplevelse og ustabilt system."
+          },
+          "learnMore": {
+            "title": "Exponential Backoff and Retry",
+            "description": "Forklaring på exponential backoff som best practice for API retries.",
+            "url": "https://cloud.google.com/storage/docs/retry-strategy",
+            "type": "article",
+            "icon": "fas fa-redo"
           }
         }
       ]
     }
+            
   ]
 }
