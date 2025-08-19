@@ -628,7 +628,7 @@
           },
           "correctAnswers": ["C"],
           "explanations": {
-            "A": "❌ InvalidOperationException handler om ugyldig brug af API’et.",
+            "A": "❌ InvalidOperationException handler om ugyldig brug af API'et.",
             "B": "❌ JsonException bruges til fejl i serialisering/deserialisering.",
             "C": "✅ HttpRequestException er den korrekte exception for netværksfejl.",
             "D": "❌ IOException bruges til fil- og stream-fejl."
@@ -687,6 +687,2084 @@
             "url": "https://cloud.google.com/storage/docs/retry-strategy",
             "type": "article",
             "icon": "fas fa-redo"
+          }
+        }
+      ]
+    },
+    {
+      "id": "solid-principles",
+      "title": "SOLID Principper",
+      "description": "Test din viden om SOLID-principperne i objektorienteret programmering og hvordan de hjælper med at skrive ren, vedligeholdelsesvenlig kode",
+      "category": "C#",
+      "difficulty": "Mellem",
+      "estimatedTime": "10-15 minutter",
+      "questions": [
+        {
+          "id": 1,
+          "questionText": "Hvad står 'S' for i SOLID-principperne?",
+          "options": {
+            "A": "Single Responsibility Principle",
+            "B": "Simple Design Principle",
+            "C": "Static Method Principle",
+            "D": "Service Layer Principle"
+          },
+          "correctAnswers": ["A"],
+          "explanations": {
+            "A": "✅ Single Responsibility Principle betyder at en klasse kun skal have én grund til at ændres.",
+            "B": "❌ Simple Design er et andet koncept, ikke en del af SOLID.",
+            "C": "❌ Static Method har intet med SOLID at gøre.",
+            "D": "❌ Service Layer er et arkitekturmønster, ikke et SOLID-princip."
+          },
+          "learnMore": {
+            "title": "Single Responsibility Principle",
+            "description": "Microsofts dokumentation om Single Responsibility Principle og hvordan det implementeres i C#.",
+            "url": "https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/architectural-principles#single-responsibility",
+            "type": "docs",
+            "icon": "fas fa-code"
+          }
+        },
+        {
+          "id": 2,
+          "questionText": "Hvad betyder Open/Closed Principle?",
+          "options": {
+            "A": "Koden skal være åben for alle at se",
+            "B": "Klasser skal være åbne for udvidelse, men lukkede for ændring",
+            "C": "Alle metoder skal være public",
+            "D": "Koden skal kunne køre på alle platforme"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Det handler ikke om synlighed af koden.",
+            "B": "✅ Du skal kunne tilføje ny funktionalitet uden at ændre eksisterende kode.",
+            "C": "❌ Access modifiers har intet med Open/Closed at gøre.",
+            "D": "❌ Det handler ikke om platformkompatibilitet."
+          },
+          "learnMore": {
+            "title": "Open/Closed Principle",
+            "description": "En forklaring af Open/Closed Principle med praktiske eksempler i C#.",
+            "url": "https://www.c-sharpcorner.com/article/open-closed-principle-in-c-sharp/",
+            "type": "article",
+            "icon": "fas fa-unlock"
+          }
+        },
+        {
+          "id": 3,
+          "questionText": "Hvad er Liskov Substitution Principle?",
+          "options": {
+            "A": "At alle klasser skal have samme navn",
+            "B": "At afledte klasser skal kunne bruges i stedet for deres baseklasse uden at ændre programmets opførsel",
+            "C": "At alle metoder skal returnere samme type",
+            "D": "At klasser skal være lige store i hukommelsen"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Navngivning har intet med LSP at gøre.",
+            "B": "✅ Hvis du har en baseklasse, skal alle afledte klasser kunne bruges på samme måde.",
+            "C": "❌ Returtyper kan variere mellem afledte klasser.",
+            "D": "❌ Hukommelsesstørrelse er ikke relevant for LSP."
+          },
+          "learnMore": {
+            "title": "Liskov Substitution Principle",
+            "description": "En dybdegående forklaring af LSP med kodeeksempler.",
+            "url": "https://www.baeldung.com/java-liskov-substitution-principle",
+            "type": "article",
+            "icon": "fas fa-exchange-alt"
+          }
+        },
+        {
+          "id": 4,
+          "questionText": "Hvad betyder Interface Segregation Principle?",
+          "options": {
+            "A": "At alle klasser skal implementere interfaces",
+            "B": "At interfaces skal være små og specifikke, ikke store og generelle",
+            "C": "At alle metoder i et interface skal være public",
+            "D": "At interfaces skal være gratis at bruge"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Det er ikke et krav at alle klasser implementerer interfaces.",
+            "B": "✅ Store interfaces tvinger klasser til at implementere metoder de ikke bruger.",
+            "C": "❌ Interface-metoder er altid public per definition.",
+            "D": "❌ Det handler ikke om omkostninger."
+          },
+          "learnMore": {
+            "title": "Interface Segregation Principle",
+            "description": "Microsofts guide til Interface Segregation Principle med praktiske eksempler.",
+            "url": "https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/architectural-principles#interface-segregation",
+            "type": "docs",
+            "icon": "fas fa-puzzle-piece"
+          }
+        },
+        {
+          "id": 5,
+          "questionText": "Hvad betyder Dependency Inversion Principle?",
+          "options": {
+            "A": "At alle dependencies skal være private",
+            "B": "At højniveau-moduler ikke skal afhænge af lavniveau-moduler - begge skal afhænge af abstraktioner",
+            "C": "At alle klasser skal være static",
+            "D": "At dependencies skal være billige at oprette"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Access modifiers har intet med DIP at gøre.",
+            "B": "✅ Højniveau-logik skal afhænge af abstraktioner, ikke konkrete implementeringer.",
+            "C": "❌ Static klasser er ikke relateret til DIP.",
+            "D": "❌ Det handler ikke om omkostninger."
+          },
+          "learnMore": {
+            "title": "Dependency Inversion Principle",
+            "description": "En forklaring af DIP og hvordan det implementeres med dependency injection.",
+            "url": "https://www.c-sharpcorner.com/article/dependency-inversion-principle-in-c-sharp/",
+            "type": "article",
+            "icon": "fas fa-arrows-alt"
+          }
+        },
+        {
+          "id": 6,
+          "questionText": "Hvordan hjælper SOLID-principperne med vedligeholdelse af kode?",
+          "options": {
+            "A": "De gør koden hurtigere at køre",
+            "B": "De gør koden lettere at forstå, ændre og udvide uden at bryde eksisterende funktionalitet",
+            "C": "De reducerer hukommelsesforbruget",
+            "D": "De forhindrer alle fejl i at ske"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ SOLID handler ikke primært om performance.",
+            "B": "✅ SOLID gør koden mere modulær og lettere at arbejde med over tid.",
+            "C": "❌ Hukommelsesforbrug påvirkes ikke direkte af SOLID.",
+            "D": "❌ SOLID forhindrer ikke fejl, men gør dem lettere at håndtere."
+          },
+          "learnMore": {
+            "title": "SOLID Principles Benefits",
+            "description": "En oversigt over fordelene ved at følge SOLID-principperne.",
+            "url": "https://www.baeldung.com/solid-principles",
+            "type": "article",
+            "icon": "fas fa-star"
+          }
+        },
+        {
+          "id": 7,
+          "questionText": "Hvad er et eksempel på brud på Single Responsibility Principle?",
+          "options": {
+            "A": "En klasse der både håndterer brugerdata og sender emails",
+            "B": "En klasse med mange private metoder",
+            "C": "En klasse der implementerer flere interfaces",
+            "D": "En klasse med mange properties"
+          },
+          "correctAnswers": ["A"],
+          "explanations": {
+            "A": "✅ En klasse skal ikke håndtere både brugerdata og email-funktionalitet - det er to ansvarsområder.",
+            "B": "❌ Antallet af private metoder påvirker ikke SRP.",
+            "C": "❌ Implementering af interfaces kan være helt fint.",
+            "D": "❌ Antallet af properties påvirker ikke SRP."
+          },
+          "learnMore": {
+            "title": "Single Responsibility Principle Examples",
+            "description": "Praktiske eksempler på SRP og hvordan man refaktorerer kode der bryder det.",
+            "url": "https://www.c-sharpcorner.com/article/single-responsibility-principle-with-example/",
+            "type": "article",
+            "icon": "fas fa-exclamation-triangle"
+          }
+        },
+        {
+          "id": 8,
+          "questionText": "Hvordan implementerer man Dependency Inversion Principle i C#?",
+          "options": {
+            "A": "Ved at bruge dependency injection og lade klasser afhænge af interfaces i stedet for konkrete klasser",
+            "B": "Ved at gøre alle metoder virtual",
+            "C": "Ved at bruge static metoder",
+            "D": "Ved at undgå at bruge interfaces"
+          },
+          "correctAnswers": ["A"],
+          "explanations": {
+            "A": "✅ DI og interfaces er den primære måde at implementere DIP på.",
+            "B": "❌ Virtual metoder er ikke relateret til DIP.",
+            "C": "❌ Static metoder gør det sværere at implementere DIP.",
+            "D": "❌ Interfaces er netop nøglen til DIP."
+          },
+          "learnMore": {
+            "title": "Dependency Injection in .NET",
+            "description": "Microsofts guide til dependency injection og hvordan det implementerer DIP.",
+            "url": "https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection",
+            "type": "docs",
+            "icon": "fas fa-cog"
+          }
+        }
+      ]
+    },
+    {
+      "id": "data-serialization",
+      "title": "Data Serialisering & JSON",
+      "description": "Test din viden om JSON håndtering, data mapping og serialisering i C# med System.Text.Json",
+      "category": "C#",
+      "difficulty": "Mellem",
+      "estimatedTime": "10-15 minutter",
+      "questions": [
+        {
+          "id": 1,
+          "questionText": "Hvad er den anbefalede måde at serialisere JSON i moderne C#?",
+          "options": {
+            "A": "Newtonsoft.Json",
+            "B": "System.Text.Json",
+            "C": "DataContractJsonSerializer",
+            "D": "JavaScriptSerializer"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Newtonsoft.Json var populær tidligere, men System.Text.Json er nu anbefalet.",
+            "B": "✅ System.Text.Json er hurtigere, indbygget i .NET og den anbefalede løsning.",
+            "C": "❌ DataContractJsonSerializer er ældre og mindre effektiv.",
+            "D": "❌ JavaScriptSerializer er forældet og bør ikke bruges."
+          },
+          "learnMore": {
+            "title": "System.Text.Json Overview",
+            "description": "Microsofts officielle dokumentation om System.Text.Json og hvorfor det er anbefalet.",
+            "url": "https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/overview",
+            "type": "docs",
+            "icon": "fas fa-code"
+          }
+        },
+        {
+          "id": 2,
+          "questionText": "Hvad gør [JsonPropertyName] attributten?",
+          "options": {
+            "A": "Gør en property readonly",
+            "B": "Mapper JSON-felter til C# properties med forskellige navne",
+            "C": "Validerer JSON-data",
+            "D": "Krypterer property-værdier"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ readonly gør properties skrivebeskyttede, ikke relateret til JSON mapping.",
+            "B": "✅ [JsonPropertyName] tillader dig at matche JSON-felter med dine egne property-navne.",
+            "C": "❌ Validering sker ikke automatisk med denne attribut.",
+            "D": "❌ Kryptering er ikke en funktion i [JsonPropertyName]."
+          },
+          "learnMore": {
+            "title": "Customize property names and values",
+            "description": "Microsofts guide til at bruge [JsonPropertyName] og andre JSON attributter.",
+            "url": "https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/customize-properties",
+            "type": "docs",
+            "icon": "fas fa-tag"
+          }
+        },
+        {
+          "id": 3,
+          "questionText": "Hvad sker der hvis du prøver at deserialisere ugyldig JSON?",
+          "options": {
+            "A": "Programmet crasher med en fatal fejl",
+            "B": "En JsonException kastes, som du kan fange med try-catch",
+            "C": "Objektet oprettes med null-værdier",
+            "D": "Intet sker - deserialiseringen ignorerer fejl"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Programmet crasher ikke - en exception kastes i stedet.",
+            "B": "✅ JsonException kastes og kan håndteres elegant med try-catch.",
+            "C": "❌ Deserialiseringen fejler helt, ikke delvist.",
+            "D": "❌ Fejl ignoreres ikke - de skal håndteres eksplicit."
+          },
+          "learnMore": {
+            "title": "Handle overflow JSON",
+            "description": "Microsofts guide til fejlhåndtering i System.Text.Json.",
+            "url": "https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/handle-overflow",
+            "type": "docs",
+            "icon": "fas fa-exclamation-triangle"
+          }
+        },
+        {
+          "id": 4,
+          "questionText": "Hvordan serialiserer du en liste af objekter til JSON?",
+          "options": {
+            "A": "JsonSerializer.Serialize<List<T>>(liste)",
+            "B": "JsonSerializer.Serialize(liste)",
+            "C": "JsonSerializer.SerializeArray(liste)",
+            "D": "JsonSerializer.ToJson(liste)"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Type-parameteren er ikke nødvendig - Serialize() kan udlede typen.",
+            "B": "✅ JsonSerializer.Serialize(liste) fungerer automatisk med alle typer inklusive lister.",
+            "C": "❌ Der findes ingen SerializeArray metode.",
+            "D": "❌ ToJson er ikke en del af System.Text.Json API'et."
+          },
+          "learnMore": {
+            "title": "Serialize to JSON",
+            "description": "Microsofts dokumentation om hvordan man serialiserer objekter til JSON.",
+            "url": "https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/how-to",
+            "type": "docs",
+            "icon": "fas fa-arrow-right"
+          }
+        },
+        {
+          "id": 5,
+          "questionText": "Hvad er en vigtig best practice ved deserialisering af ekstern JSON?",
+          "options": {
+            "A": "Altid stole på at JSON'en er korrekt formateret",
+            "B": "Valider data efter deserialisering og håndter fejl med try-catch",
+            "C": "Brug kun Newtonsoft.Json til ekstern data",
+            "D": "Ignorer alle fejl for at undgå crashes"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Du skal aldrig stole blindt på ekstern data - valider altid.",
+            "B": "✅ Validering og fejlhåndtering er kritiske for robuste applikationer.",
+            "C": "❌ System.Text.Json er fint til ekstern data - det handler om validering.",
+            "D": "❌ At ignorere fejl giver ustabile applikationer og sikkerhedsrisici."
+          },
+          "learnMore": {
+            "title": "JSON security in .NET",
+            "description": "Microsofts guide til sikker JSON-håndtering og validering.",
+            "url": "https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/security",
+            "type": "docs",
+            "icon": "fas fa-shield-alt"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bcrypt-security",
+      "title": "BCrypt & Password Sikkerhed",
+      "description": "Test din viden om BCrypt hashing, password sikkerhed, salt og hvordan man implementerer sikker brugerautentificering i C#",
+      "category": "Sikkerhed",
+      "difficulty": "Mellem",
+      "estimatedTime": "10-15 minutter",
+      "questions": [
+        {
+          "id": 1,
+          "questionText": "Hvorfor er BCrypt bedre end simple hash-funktioner som MD5 til passwords?",
+          "options": {
+            "A": "BCrypt er hurtigere at beregne",
+            "B": "BCrypt er langsomt og derfor svært at brute-force",
+            "C": "BCrypt kan dekrypteres igen",
+            "D": "BCrypt bruger mindre hukommelse"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ BCrypt er faktisk langsommere - det er netop pointen for sikkerhed.",
+            "B": "✅ BCrypt's langsomhed gør det upraktisk at brute-force passwords.",
+            "C": "❌ BCrypt er en one-way hash-funktion - den kan ikke dekrypteres.",
+            "D": "❌ Hukommelsesforbrug er ikke hovedfordelen ved BCrypt."
+          },
+          "learnMore": {
+            "title": "Why BCrypt is Better",
+            "description": "En forklaring af hvorfor BCrypt er bedre end andre hash-funktioner til passwords.",
+            "url": "https://auth0.com/blog/hashing-in-action-understanding-bcrypt/",
+            "type": "article",
+            "icon": "fas fa-shield-alt"
+          }
+        },
+        {
+          "id": 2,
+          "questionText": "Hvad er formålet med salt i password hashing?",
+          "options": {
+            "A": "At gøre passwords længere",
+            "B": "At beskytte mod rainbow table-angreb ved at give hvert password et unikt salt",
+            "C": "At kryptere passwords",
+            "D": "At reducere hash-størrelsen"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Salt påvirker ikke password-længden, kun hash-unikheden.",
+            "B": "✅ Salt gør hver hash unik, selv for identiske passwords, hvilket forhindrer rainbow table-angreb.",
+            "C": "❌ Salt er ikke kryptering - det er en tilføjelse til hashing.",
+            "D": "❌ Salt øger faktisk hash-størrelsen, ikke reducerer den."
+          },
+          "learnMore": {
+            "title": "Password Salting",
+            "description": "Microsofts guide til password sikkerhed og salting.",
+            "url": "https://learn.microsoft.com/en-us/aspnet/core/security/data-protection/consumer-apis/password-hashing",
+            "type": "docs",
+            "icon": "fas fa-key"
+          }
+        },
+        {
+          "id": 3,
+          "questionText": "Hvordan hasher du et password med BCrypt i C#?",
+          "options": {
+            "A": "BCrypt.HashPassword(password)",
+            "B": "BCrypt.Encrypt(password)",
+            "C": "BCrypt.Hash(password)",
+            "D": "BCrypt.Protect(password)"
+          },
+          "correctAnswers": ["A"],
+          "explanations": {
+            "A": "✅ BCrypt.HashPassword(password) er den korrekte metode til at hashe passwords.",
+            "B": "❌ BCrypt er ikke kryptering - det er hashing.",
+            "C": "❌ Der findes ingen Hash metode - det er HashPassword.",
+            "D": "❌ Protect er ikke en BCrypt-metode."
+          },
+          "learnMore": {
+            "title": "BCrypt.Net-Next Documentation",
+            "description": "Officiel dokumentation for BCrypt.Net-Next pakken.",
+            "url": "https://github.com/BcryptNet/bcrypt.net",
+            "type": "docs",
+            "icon": "fas fa-book-open"
+          }
+        },
+        {
+          "id": 4,
+          "questionText": "Hvordan validerer du et password mod en BCrypt hash?",
+          "options": {
+            "A": "BCrypt.Decrypt(password, hash)",
+            "B": "BCrypt.Verify(password, hash)",
+            "C": "BCrypt.Compare(password, hash)",
+            "D": "BCrypt.Match(password, hash)"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ BCrypt kan ikke dekrypteres - det er en one-way hash.",
+            "B": "✅ BCrypt.Verify(password, hash) sammenligner password med hash.",
+            "C": "❌ Der findes ingen Compare metode - det er Verify.",
+            "D": "❌ Der findes ingen Match metode - det er Verify."
+          },
+          "learnMore": {
+            "title": "BCrypt Password Verification",
+            "description": "En guide til at validere passwords med BCrypt.",
+            "url": "https://www.c-sharpcorner.com/article/bcrypt-password-hashing-in-c-sharp/",
+            "type": "article",
+            "icon": "fas fa-check-circle"
+          }
+        },
+        {
+          "id": 5,
+          "questionText": "Hvad sker der hvis du hasher det samme password to gange med BCrypt?",
+          "options": {
+            "A": "Du får altid den samme hash",
+            "B": "Du får forskellige hashes hver gang pga. automatisk salt",
+            "C": "Anden hash fejler med en fejl",
+            "D": "Du får en dobbelt hash"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ BCrypt genererer automatisk nyt salt hver gang, så hashes bliver forskellige.",
+            "B": "✅ Hver hash får et unikt salt, så identiske passwords giver forskellige hashes.",
+            "C": "❌ BCrypt fejler ikke - det fungerer perfekt hver gang.",
+            "D": "❌ Du får ikke dobbelt hashing - hver hash er komplet og unik."
+          },
+          "learnMore": {
+            "title": "BCrypt Salt Generation",
+            "description": "Forklaring af hvordan BCrypt automatisk genererer salt.",
+            "url": "https://stackoverflow.com/questions/6832445/how-can-bcrypt-have-built-in-salts",
+            "type": "article",
+            "icon": "fas fa-random"
+          }
+        },
+        {
+          "id": 6,
+          "questionText": "Hvad er en rainbow table i kontekst af password sikkerhed?",
+          "options": {
+            "A": "En tabel med farver til UI-design",
+            "B": "En forudberegnet liste over hashes for almindelige passwords",
+            "C": "En database med brugeroplysninger",
+            "D": "En liste over sikre passwords"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Det handler ikke om UI-design eller farver.",
+            "B": "✅ Rainbow tables indeholder forudberegnede hashes for almindelige passwords, som angribere kan bruge.",
+            "C": "❌ Det er ikke en database med brugeroplysninger.",
+            "D": "❌ Det er ikke en liste over sikre passwords."
+          },
+          "learnMore": {
+            "title": "Rainbow Table Attacks",
+            "description": "En forklaring af rainbow table-angreb og hvordan salt beskytter mod dem.",
+            "url": "https://www.techopedia.com/definition/4023/rainbow-table",
+            "type": "article",
+            "icon": "fas fa-table"
+          }
+        },
+        {
+          "id": 7,
+          "questionText": "Hvad er den korrekte måde at implementere password validering i en login-controller?",
+          "options": {
+            "A": "Sammenlign password direkte med hash fra databasen",
+            "B": "Hash det indtastede password og sammenlign med hash fra databasen",
+            "C": "Brug BCrypt.Verify(password, hash) til at sammenligne",
+            "D": "Dekrypter hash fra databasen og sammenlign med password"
+          },
+          "correctAnswers": ["C"],
+          "explanations": {
+            "A": "❌ Du kan ikke sammenligne password direkte med hash.",
+            "B": "❌ Hashing passwordet igen giver en anden hash pga. nyt salt.",
+            "C": "✅ BCrypt.Verify() håndterer salt og sammenligning korrekt.",
+            "D": "❌ BCrypt hashes kan ikke dekrypteres - de er one-way."
+          },
+          "learnMore": {
+            "title": "Implementing Secure Login",
+            "description": "Microsofts guide til sikker brugerautentificering.",
+            "url": "https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity",
+            "type": "docs",
+            "icon": "fas fa-user-check"
+          }
+        },
+        {
+          "id": 8,
+          "questionText": "Hvad er en vigtig best practice ved brug af BCrypt i produktion?",
+          "options": {
+            "A": "Gem passwords i klartekst som backup",
+            "B": "Gem kun den hashede password-streng, aldrig det oprindelige password",
+            "C": "Brug samme salt for alle brugere",
+            "D": "Hash passwords flere gange for ekstra sikkerhed"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ At gemme passwords i klartekst er en alvorlig sikkerhedsfejl.",
+            "B": "✅ Du skal kun gemme den hashede password-streng - aldrig det oprindelige password.",
+            "C": "❌ BCrypt genererer automatisk unikt salt for hver bruger - det skal du ikke ændre.",
+            "D": "❌ BCrypt er allerede designet til at være sikker - dobbelt hashing er unødvendigt og kan skabe problemer."
+          },
+          "learnMore": {
+            "title": "Password Security Best Practices",
+            "description": "OWASP guide til sikker password-håndtering.",
+            "url": "https://owasp.org/www-project-cheat-sheets/cheatsheets/Authentication_Cheat_Sheet.html",
+            "type": "article",
+            "icon": "fas fa-lock"
+          }
+        }
+      ]
+    },
+    {
+      "id": "efcore-relations",
+      "title": "EF Core Relationer & Datamodellering",
+      "description": "Test din viden om 1:1, 1:n og n:m relationer i Entity Framework Core og hvordan man designer effektive databaser",
+      "category": "C#",
+      "difficulty": "Mellem",
+      "estimatedTime": "10-15 minutter",
+      "questions": [
+        {
+          "id": 1,
+          "questionText": "Hvad betyder 1:1 relation i datamodellering?",
+          "options": {
+            "A": "Én entitet har præcis én relateret entitet",
+            "B": "Én entitet har mange relaterede entiteter",
+            "C": "Mange entiteter kan være relateret til mange andre",
+            "D": "Én entitet kan være relateret til alle andre"
+          },
+          "correctAnswers": ["A"],
+          "explanations": {
+            "A": "✅ 1:1 betyder at én entitet har præcis én relateret entitet, som User og UserInfo.",
+            "B": "❌ Det beskriver en 1:n relation.",
+            "C": "❌ Det beskriver en n:m relation.",
+            "D": "❌ Det er ikke en standard relationstype i datamodellering."
+          },
+          "learnMore": {
+            "title": "EF Core Relationships",
+            "description": "Microsofts guide til relationer i Entity Framework Core.",
+            "url": "https://learn.microsoft.com/en-us/ef/core/modeling/relationships",
+            "type": "docs",
+            "icon": "fas fa-project-diagram"
+          }
+        },
+        {
+          "id": 2,
+          "questionText": "Hvornår bruger man en 1:1 relation i stedet for at putte alt i én tabel?",
+          "options": {
+            "A": "Når man vil gøre databasen større",
+            "B": "Når man vil normalisere data og undgå at hente unødvendige felter",
+            "C": "Når man vil gøre queries langsommere",
+            "D": "Når man vil undgå at bruge foreign keys"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ 1:1 relationer gør ikke databasen større - de hjælper med normalisering.",
+            "B": "✅ Normalisering giver hurtigere queries og mindre dataoverførsel.",
+            "C": "❌ Normalisering gør queries hurtigere, ikke langsommere.",
+            "D": "❌ 1:1 relationer bruger stadig foreign keys."
+          },
+          "learnMore": {
+            "title": "Database Normalization",
+            "description": "En forklaring af database normalisering og dens fordele.",
+            "url": "https://www.guru99.com/database-normalization.html",
+            "type": "article",
+            "icon": "fas fa-database"
+          }
+        },
+        {
+          "id": 3,
+          "questionText": "Hvad er forskellen på 1:n og n:m relationer?",
+          "options": {
+            "A": "1:n har kun én foreign key, n:m har to",
+            "B": "1:n betyder at én entitet har mange relaterede, n:m betyder at mange kan være relateret til mange andre",
+            "C": "1:n er hurtigere end n:m",
+            "D": "1:n bruger ikke join-tabeller, n:m gør"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Antallet af foreign keys er ikke den primære forskel.",
+            "B": "✅ 1:n er hierarkisk (hotel har værelser), n:m er netværksbaseret (brugere booker værelser).",
+            "C": "❌ Hastighed afhænger af implementering, ikke relationstype.",
+            "D": "❌ Både 1:n og n:m kan bruge join-tabeller afhængigt af implementering."
+          },
+          "learnMore": {
+            "title": "One-to-Many vs Many-to-Many",
+            "description": "En dybdegående forklaring af forskellen mellem relationstyper.",
+            "url": "https://www.baeldung.com/jpa-many-to-many",
+            "type": "article",
+            "icon": "fas fa-sitemap"
+          }
+        },
+        {
+          "id": 4,
+          "questionText": "Hvordan konfigurerer du en 1:n relation i EF Core?",
+          "options": {
+            "A": "modelBuilder.Entity<Hotel>().HasOne(h => h.Rooms).WithMany(r => r.Hotel)",
+            "B": "modelBuilder.Entity<Hotel>().HasMany(h => h.Rooms).WithOne(r => r.Hotel)",
+            "C": "modelBuilder.Entity<Hotel>().HasMany(h => h.Rooms).WithMany(r => r.Hotel)",
+            "D": "modelBuilder.Entity<Hotel>().HasOne(h => h.Rooms).WithOne(r => r.Hotel)"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ HasOne/WithMany er for 1:1 relationer.",
+            "B": "✅ HasMany/WithOne er korrekt for 1:n relationer.",
+            "C": "❌ HasMany/WithMany er for n:m relationer.",
+            "D": "❌ HasOne/WithOne er for 1:1 relationer."
+          },
+          "learnMore": {
+            "title": "EF Core One-to-Many",
+            "description": "Microsofts guide til 1:n relationer i EF Core.",
+            "url": "https://learn.microsoft.com/en-us/ef/core/modeling/relationships#one-to-many",
+            "type": "docs",
+            "icon": "fas fa-code"
+          }
+        },
+        {
+          "id": 5,
+          "questionText": "Hvad er formålet med en join-tabel i n:m relationer?",
+          "options": {
+            "A": "At gøre databasen hurtigere",
+            "B": "At gemme ekstra data om relationen (som datoer, priser)",
+            "C": "At undgå at bruge foreign keys",
+            "D": "At reducere antallet af tabeller"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Join-tabeller gør ikke nødvendigvis databasen hurtigere.",
+            "B": "✅ Join-tabeller kan indeholde metadata om relationen (startdato, slutdato, pris).",
+            "C": "❌ Join-tabeller bruger stadig foreign keys.",
+            "D": "❌ Join-tabeller øger antallet af tabeller, ikke reducerer det."
+          },
+          "learnMore": {
+            "title": "Many-to-Many with Join Table",
+            "description": "En guide til n:m relationer med join-tabeller i EF Core.",
+            "url": "https://learn.microsoft.com/en-us/ef/core/modeling/relationships#many-to-many",
+            "type": "docs",
+            "icon": "fas fa-table"
+          }
+        },
+        {
+          "id": 6,
+          "questionText": "Hvad er fordelene ved at bruge navigation properties i EF Core?",
+          "options": {
+            "A": "De gør alle queries hurtigere automatisk",
+            "B": "De giver type-sikker adgang til relaterede data og understøtter lazy loading",
+            "C": "De eliminerer behovet for foreign keys",
+            "D": "De reducerer hukommelsesforbruget"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Navigation properties gør ikke alle queries hurtigere - det afhænger af hvordan de bruges.",
+            "B": "✅ Navigation properties giver type-sikkerhed og understøtter lazy/eager loading.",
+            "C": "❌ Foreign keys er stadig nødvendige i databasen.",
+            "D": "❌ Navigation properties kan faktisk øge hukommelsesforbruget ved lazy loading."
+          },
+          "learnMore": {
+            "title": "Navigation Properties in EF Core",
+            "description": "Microsofts dokumentation om navigation properties.",
+            "url": "https://learn.microsoft.com/en-us/ef/core/modeling/relationships#navigation-properties",
+            "type": "docs",
+            "icon": "fas fa-route"
+          }
+        },
+        {
+          "id": 7,
+          "questionText": "Hvad sker der hvis du ikke konfigurerer relationer eksplicit i OnModelCreating?",
+          "options": {
+            "A": "EF Core kan ikke oprette databasen",
+            "B": "EF Core bruger konventioner til at gætte relationerne baseret på property-navne",
+            "C": "Alle relationer bliver n:m som standard",
+            "D": "Du skal altid skrive SQL-manuelt"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ EF Core kan stadig oprette databasen med konventioner.",
+            "B": "✅ EF Core har intelligente konventioner der kan gætte de fleste relationer.",
+            "C": "❌ Standardrelationer afhænger af property-navne og typer, ikke altid n:m.",
+            "D": "❌ EF Core genererer stadig SQL automatisk."
+          },
+          "learnMore": {
+            "title": "EF Core Conventions",
+            "description": "Microsofts guide til EF Core konventioner og hvordan de fungerer.",
+            "url": "https://learn.microsoft.com/en-us/ef/core/modeling/relationships#conventions",
+            "type": "docs",
+            "icon": "fas fa-magic"
+          }
+        },
+        {
+          "id": 8,
+          "questionText": "Hvornår bør du bruge Include() i EF Core queries?",
+          "options": {
+            "A": "Altid, for at sikre at al data hentes",
+            "B": "Kun når du faktisk har brug for relaterede data for at undgå N+1 queries",
+            "C": "Kun i development, ikke i produktion",
+            "D": "Kun når du bruger stored procedures"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ At inkludere alt kan give unødvendig dataoverførsel og langsommere queries.",
+            "B": "✅ Include() bør kun bruges når du faktisk har brug for relaterede data.",
+            "C": "❌ Include() kan bruges både i development og produktion.",
+            "D": "❌ Include() er ikke relateret til stored procedures."
+          },
+          "learnMore": {
+            "title": "Loading Related Data",
+            "description": "Microsofts guide til at indlæse relaterede data i EF Core.",
+            "url": "https://learn.microsoft.com/en-us/ef/core/querying/related-data",
+            "type": "docs",
+            "icon": "fas fa-download"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dtos-data-transfer",
+      "title": "DTO'er & Data Transfer Objekter",
+      "description": "Test din viden om DTO'er, deres formål og hvordan de hjælper med at optimere API-performance og datastruktur",
+      "category": "C#",
+      "difficulty": "Mellem",
+      "estimatedTime": "10-15 minutter",
+      "questions": [
+        {
+          "id": 1,
+          "questionText": "Hvad står DTO for og hvad er formålet?",
+          "options": {
+            "A": "Data Type Object - at definere datatyper",
+            "B": "Data Transfer Object - at overføre data mellem lag uden at eksponere intern struktur",
+            "C": "Database Table Object - at mappe database tabeller",
+            "D": "Data Type Output - at formatere output data"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Data Type Object er ikke det korrekte udtryk.",
+            "B": "✅ DTO står for Data Transfer Object og bruges til at overføre data mellem lag.",
+            "C": "❌ Database Table Object er ikke det korrekte udtryk.",
+            "D": "❌ Data Type Output er ikke det korrekte udtryk."
+          },
+          "learnMore": {
+            "title": "DTO Pattern",
+            "description": "En forklaring af DTO-mønsteret og dets fordele.",
+            "url": "https://www.baeldung.com/java-dto-pattern",
+            "type": "article",
+            "icon": "fas fa-exchange-alt"
+          }
+        },
+        {
+          "id": 2,
+          "questionText": "Hvad er hovedfordelen ved at bruge DTO'er i stedet for at returnere database-entiteter direkte?",
+          "options": {
+            "A": "DTO'er er altid hurtigere at oprette",
+            "B": "DTO'er giver kontrol over hvilke data der eksponeres og kan optimere API-performance",
+            "C": "DTO'er eliminerer behovet for database queries",
+            "D": "DTO'er gør det nemmere at skrive SQL"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ DTO'er er ikke nødvendigvis hurtigere at oprette.",
+            "B": "✅ DTO'er giver kontrol over dataeksponering og kan optimere performance.",
+            "C": "❌ DTO'er eliminerer ikke behovet for database queries.",
+            "D": "❌ DTO'er er ikke relateret til SQL-skrivning."
+          },
+          "learnMore": {
+            "title": "Why Use DTOs",
+            "description": "En forklaring af fordelene ved at bruge DTO'er i stedet for direkte entiteter.",
+            "url": "https://www.c-sharpcorner.com/article/why-we-use-dto-data-transfer-objects/",
+            "type": "article",
+            "icon": "fas fa-rocket"
+          }
+        },
+        {
+          "id": 3,
+          "questionText": "Hvad er forskellen mellem en DTO og en ViewModel?",
+          "options": {
+            "A": "Der er ingen forskel - de er det samme",
+            "B": "DTO'er bruges til API-kommunikation, ViewModels til UI-binding",
+            "C": "DTO'er kan kun bruges i backend, ViewModels kun i frontend",
+            "D": "DTO'er er altid mindre end ViewModels"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ DTO'er og ViewModels har forskellige formål og bruges i forskellige lag.",
+            "B": "✅ DTO'er er til dataoverførsel mellem lag, ViewModels til UI-binding.",
+            "C": "❌ Både DTO'er og ViewModels kan bruges i både backend og frontend.",
+            "D": "❌ Størrelsen afhænger af formålet, ikke typen."
+          },
+          "learnMore": {
+            "title": "DTO vs ViewModel",
+            "description": "En sammenligning af DTO'er og ViewModels og hvornår man bruger hver.",
+            "url": "https://stackoverflow.com/questions/1051182/what-are-the-differences-between-dto-vo-pojo-javabeans",
+            "type": "article",
+            "icon": "fas fa-balance-scale"
+          }
+        },
+        {
+          "id": 4,
+          "questionText": "Hvordan kan DTO'er hjælpe med at undgå N+1 query problemer?",
+          "options": {
+            "A": "DTO'er eliminerer automatisk alle database queries",
+            "B": "DTO'er kan samle data fra flere entiteter i ét kald og returnere det som ét objekt",
+            "C": "DTO'er cacher altid data i hukommelsen",
+            "D": "DTO'er bruger kun stored procedures"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ DTO'er eliminerer ikke automatisk database queries.",
+            "B": "✅ DTO'er kan samle data fra flere kilder og returnere det som ét optimeret objekt.",
+            "C": "❌ DTO'er cacher ikke automatisk data.",
+            "D": "❌ DTO'er er ikke begrænset til stored procedures."
+          },
+          "learnMore": {
+            "title": "N+1 Query Problem",
+            "description": "En forklaring af N+1 query problemet og hvordan man løser det.",
+            "url": "https://planetscale.com/blog/what-is-n-1-query-problem-and-how-to-solve-it",
+            "type": "article",
+            "icon": "fas fa-search"
+          }
+        },
+        {
+          "id": 5,
+          "questionText": "Hvad er en AutoMapper og hvornår bruger man den med DTO'er?",
+          "options": {
+            "A": "En database-mapper der automatisk opretter tabeller",
+            "B": "Et bibliotek der automatisk mapper mellem entiteter og DTO'er for at undgå manuel mapping",
+            "C": "En EF Core funktion der mapper relations",
+            "D": "En JSON-serializer der mapper properties"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ AutoMapper er ikke en database-mapper.",
+            "B": "✅ AutoMapper automatiserer mapping mellem entiteter og DTO'er.",
+            "C": "❌ AutoMapper er ikke en del af EF Core.",
+            "D": "❌ AutoMapper er ikke en JSON-serializer."
+          },
+          "learnMore": {
+            "title": "AutoMapper in .NET",
+            "description": "Microsofts guide til AutoMapper og hvordan man bruger det.",
+            "url": "https://docs.automapper.org/en/stable/Getting-started.html",
+            "type": "docs",
+            "icon": "fas fa-magic"
+          }
+        },
+        {
+          "id": 6,
+          "questionText": "Hvad er fordelene ved at bruge separate DTO'er for input og output?",
+          "options": {
+            "A": "Det gør API'et langsommere",
+            "B": "Det giver bedre kontrol over data-validering og sikkerhed",
+            "C": "Det eliminerer behovet for DataAnnotations",
+            "D": "Det gør det nemmere at skrive SQL"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Separate DTO'er gør ikke API'et langsommere.",
+            "B": "✅ Separate DTO'er giver bedre kontrol over input-validering og output-struktur.",
+            "C": "❌ DataAnnotations kan stadig bruges i DTO'er.",
+            "D": "❌ DTO'er er ikke relateret til SQL-skrivning."
+          },
+          "learnMore": {
+            "title": "Input vs Output DTOs",
+            "description": "En guide til at designe separate DTO'er for input og output.",
+            "url": "https://www.c-sharpcorner.com/article/input-and-output-dto-pattern/",
+            "type": "article",
+            "icon": "fas fa-arrows-alt"
+          }
+        },
+        {
+          "id": 7,
+          "questionText": "Hvordan håndterer du validering i DTO'er?",
+          "options": {
+            "A": "Validering sker automatisk i alle DTO'er",
+            "B": "Du kan bruge DataAnnotations som [Required], [EmailAddress] osv. på DTO properties",
+            "C": "Validering skal altid skrives manuelt i controllers",
+            "D": "DTO'er kan ikke valideres"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Validering sker ikke automatisk - du skal konfigurere det.",
+            "B": "✅ DataAnnotations kan bruges på DTO properties for automatisk validering.",
+            "C": "❌ Validering kan automatiseres med DataAnnotations.",
+            "D": "❌ DTO'er kan sagtens valideres med DataAnnotations."
+          },
+          "learnMore": {
+            "title": "Data Annotations in .NET",
+            "description": "Microsofts guide til DataAnnotations og validering.",
+            "url": "https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.dataannotations",
+            "type": "docs",
+            "icon": "fas fa-check-circle"
+          }
+        },
+        {
+          "id": 8,
+          "questionText": "Hvad er en vigtig best practice ved design af DTO'er?",
+          "options": {
+            "A": "DTO'er skal altid være identiske med database-entiteter",
+            "B": "DTO'er skal kun indeholde de data der faktisk er nødvendige for det specifikke use case",
+            "C": "DTO'er skal altid være større end entiteter",
+            "D": "DTO'er skal altid bruge samme navne som entiteter"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ DTO'er skal ikke altid være identiske med entiteter - det er pointen med DTO'er.",
+            "B": "✅ DTO'er skal kun indeholde nødvendig data for det specifikke use case.",
+            "C": "❌ DTO'er skal ikke altid være større - de kan være mindre for at optimere performance.",
+            "D": "❌ DTO'er kan have andre navne end entiteter for bedre læsbarhed."
+          },
+          "learnMore": {
+            "title": "DTO Design Best Practices",
+            "description": "En guide til at designe effektive DTO'er.",
+            "url": "https://www.c-sharpcorner.com/article/dto-design-patterns-and-best-practices/",
+            "type": "article",
+            "icon": "fas fa-star"
+          }
+        }
+      ]
+    },
+    {
+      "id": "xml-comments",
+      "title": "XML-kommentarer & API-dokumentation",
+      "description": "Test din viden om XML-kommentarer i C#, hvordan man dokumenterer API'er og aktiverer Swagger-dokumentation",
+      "category": "C#",
+      "difficulty": "Mellem",
+      "estimatedTime": "10-15 minutter",
+      "questions": [
+        {
+          "id": 1,
+          "questionText": "Hvad er formålet med XML-kommentarer i C# API'er?",
+          "options": {
+            "A": "At gøre koden hurtigere at køre",
+            "B": "At dokumentere API'er så andre udviklere kan forstå endpoints uden at kende koden",
+            "C": "At kryptere API-endpoints",
+            "D": "At reducere hukommelsesforbruget"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ XML-kommentarer påvirker ikke kode-performance.",
+            "B": "✅ XML-kommentarer giver automatisk API-dokumentation som Swagger kan vise.",
+            "C": "❌ XML-kommentarer er ikke kryptering - de er dokumentation.",
+            "D": "❌ XML-kommentarer påvirker ikke hukommelsesforbrug."
+          },
+          "learnMore": {
+            "title": "XML Documentation Comments",
+            "description": "Microsofts guide til XML-kommentarer i C#.",
+            "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/",
+            "type": "docs",
+            "icon": "fas fa-comments"
+          }
+        },
+        {
+          "id": 2,
+          "questionText": "Hvilken tag bruges til at beskrive hvad en metode gør?",
+          "options": {
+            "A": "<description>",
+            "B": "<summary>",
+            "C": "<method>",
+            "D": "<info>"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ <description> er ikke en standard XML-kommentar tag.",
+            "B": "✅ <summary> bruges til at beskrive hvad metoden gør.",
+            "C": "❌ <method> er ikke en standard XML-kommentar tag.",
+            "D": "❌ <info> er ikke en standard XML-kommentar tag."
+          },
+          "learnMore": {
+            "title": "XML Documentation Tags",
+            "description": "En oversigt over alle tilgængelige XML-kommentar tags i C#.",
+            "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/recommended-tags",
+            "type": "docs",
+            "icon": "fas fa-tags"
+          }
+        },
+        {
+          "id": 3,
+          "questionText": "Hvordan dokumenterer du en parameter i en XML-kommentar?",
+          "options": {
+            "A": "<param name=\"parameterName\">Beskrivelse af parameteren</param>",
+            "B": "<parameter name=\"parameterName\">Beskrivelse af parameteren</parameter>",
+            "C": "<input name=\"parameterName\">Beskrivelse af parameteren</input>",
+            "D": "<arg name=\"parameterName\">Beskrivelse af parameteren</arg>"
+          },
+          "correctAnswers": ["A"],
+          "explanations": {
+            "A": "✅ <param name=\"parameterName\"> er den korrekte syntaks for at dokumentere parametre.",
+            "B": "❌ <parameter> er ikke en standard XML-kommentar tag.",
+            "C": "❌ <input> er ikke en standard XML-kommentar tag.",
+            "D": "❌ <arg> er ikke en standard XML-kommentar tag."
+          },
+          "learnMore": {
+            "title": "Documenting Parameters",
+            "description": "Microsofts guide til at dokumentere parametre med XML-kommentarer.",
+            "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/recommended-tags#param",
+            "type": "docs",
+            "icon": "fas fa-code"
+          }
+        },
+        {
+          "id": 4,
+          "questionText": "Hvad bruges <response code=\"...\"> taggen til?",
+          "options": {
+            "A": "At definere HTTP-metoder (GET, POST, etc.)",
+            "B": "At beskrive hvilke HTTP-statuskoder der kan returneres og hvorfor",
+            "C": "At specificere response-typen",
+            "D": "At definere API-versioner"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ HTTP-metoder defineres med attributter som [HttpGet], ikke med <response>.",
+            "B": "✅ <response code=\"...\"> beskriver mulige HTTP-statuskoder og deres betydning.",
+            "C": "❌ Response-typen defineres med <returns>, ikke med <response>.",
+            "D": "❌ API-versioner håndteres ikke med <response> tags."
+          },
+          "learnMore": {
+            "title": "Documenting Responses",
+            "description": "En guide til at dokumentere API-responses med XML-kommentarer.",
+            "url": "https://learn.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle",
+            "type": "docs",
+            "icon": "fas fa-reply"
+          }
+        },
+        {
+          "id": 5,
+          "questionText": "Hvad skal du tilføje i din .csproj fil for at generere XML-dokumentation?",
+          "options": {
+            "A": "<GenerateDocumentationFile>true</GenerateDocumentationFile>",
+            "B": "<XMLDocumentation>true</XMLDocumentation>",
+            "C": "<CreateXMLFile>true</CreateXMLFile>",
+            "D": "<EnableXMLDocs>true</EnableXMLDocs>"
+          },
+          "correctAnswers": ["A"],
+          "explanations": {
+            "A": "✅ <GenerateDocumentationFile>true</GenerateDocumentationFile> aktiverer XML-dokumentationsgenerering.",
+            "B": "❌ <XMLDocumentation> er ikke en standard property.",
+            "C": "❌ <CreateXMLFile> er ikke en standard property.",
+            "D": "❌ <EnableXMLDocs> er ikke en standard property."
+          },
+          "learnMore": {
+            "title": "Generate XML Documentation",
+            "description": "Microsofts guide til at generere XML-dokumentation i .NET projekter.",
+            "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/#generate-documentation",
+            "type": "docs",
+            "icon": "fas fa-file-code"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cors-xss-security",
+      "title": "CORS & XSS Sikkerhed",
+      "description": "Test din viden om Cross-Origin Resource Sharing, Cross-Site Scripting og hvordan man beskytter webapplikationer mod sikkerhedsangreb",
+      "category": "Sikkerhed",
+      "difficulty": "Mellem",
+      "estimatedTime": "10-15 minutter",
+      "questions": [
+        {
+          "id": 1,
+          "questionText": "Hvad står CORS for og hvorfor er det vigtigt?",
+          "options": {
+            "A": "Cross-Origin Resource Sharing - det forhindrer ondsindede websites i at få uautoriseret adgang til andre domæner",
+            "B": "Cross-Origin Request System - det gør alle API-kald hurtigere",
+            "C": "Cross-Origin Response Security - det krypterer al data automatisk",
+            "D": "Cross-Origin Resource Security - det eliminerer alle sikkerhedsrisici"
+          },
+          "correctAnswers": ["A"],
+          "explanations": {
+            "A": "✅ CORS er en sikkerhedsmekanisme der forhindrer uautoriseret adgang fra andre domæner.",
+            "B": "❌ CORS handler ikke om hastighed, men om sikkerhed.",
+            "C": "❌ CORS krypterer ikke data automatisk.",
+            "D": "❌ CORS eliminerer ikke alle risici - det er en del af sikkerhedsstrategien."
+          },
+          "learnMore": {
+            "title": "CORS Explained",
+            "description": "En autoritativ guide til CORS og hvorfor det er vigtigt for REST API'er.",
+            "url": "https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/",
+            "type": "article",
+            "icon": "fas fa-shield-alt"
+          }
+        },
+        {
+          "id": 2,
+          "questionText": "Hvad betyder det hvis en API har 'Access-Control-Allow-Origin: *'?",
+          "options": {
+            "A": "API'et er kun tilgængeligt for lokale requests",
+            "B": "API'et er åbent for alle domæner - hvilket kan være en sikkerhedsrisiko",
+            "C": "API'et er kun tilgængeligt for HTTPS requests",
+            "D": "API'et kræver authentication for alle requests"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ '*' betyder alle domæner, ikke kun lokale.",
+            "B": "✅ '*' tillader alle domæner at kalde API'et, hvilket kan være farligt.",
+            "C": "❌ '*' handler ikke om HTTPS vs HTTP.",
+            "D": "❌ '*' påvirker ikke authentication-krav."
+          },
+          "learnMore": {
+            "title": "CORS Security Risks",
+            "description": "En forklaring af sikkerhedsrisici ved løse CORS-politikker.",
+            "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#security_considerations",
+            "type": "docs",
+            "icon": "fas fa-exclamation-triangle"
+          }
+        },
+        {
+          "id": 3,
+          "questionText": "Hvad er Cross-Site Scripting (XSS)?",
+          "options": {
+            "A": "En teknik til at kryptere data mellem domæner",
+            "B": "Et angreb hvor ondsindet JavaScript-kode injiceres på en hjemmeside",
+            "C": "En metode til at dele ressourcer mellem forskellige domæner",
+            "D": "En teknik til at optimere website-performance"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ XSS handler ikke om kryptering af data.",
+            "B": "✅ XSS er et angreb hvor ondsindet kode injiceres gennem uvalideret input.",
+            "C": "❌ Det beskriver CORS, ikke XSS.",
+            "D": "❌ XSS handler ikke om performance-optimering."
+          },
+          "learnMore": {
+            "title": "Cross-Site Scripting (XSS)",
+            "description": "OWASP guide til XSS og hvordan man forhindrer det.",
+            "url": "https://owasp.org/www-community/attacks/xss/",
+            "type": "article",
+            "icon": "fas fa-bug"
+          }
+        },
+        {
+          "id": 4,
+          "questionText": "Hvordan kan du forhindre XSS-angreb i din webapplikation?",
+          "options": {
+            "A": "Ved at bruge HTTPS på alle sider",
+            "B": "Ved at validere og sanitize al bruger-input og undgå at outputte uvalideret HTML",
+            "C": "Ved at blokere alle JavaScript-filer",
+            "D": "Ved at bruge CORS-headers"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ HTTPS beskytter mod man-in-the-middle, ikke XSS.",
+            "B": "✅ Input-validering og output-sanitization er de primære forsvarsmekanismer mod XSS.",
+            "C": "❌ At blokere JavaScript vil ødelægge funktionaliteten af de fleste moderne websites.",
+            "D": "❌ CORS beskytter mod cross-origin requests, ikke XSS."
+          },
+          "learnMore": {
+            "title": "XSS Prevention",
+            "description": "Microsofts guide til at forhindre XSS i ASP.NET Core.",
+            "url": "https://learn.microsoft.com/en-us/aspnet/core/security/cross-site-scripting",
+            "type": "docs",
+            "icon": "fas fa-lock"
+          }
+        },
+        {
+          "id": 5,
+          "questionText": "Hvad er en sikker CORS-konfiguration for et produktionsmiljø?",
+          "options": {
+            "A": "Tillad alle domæner med '*' for maksimal kompatibilitet",
+            "B": "Tillad kun specifikke, godkendte domæner som din frontend kører på",
+            "C": "Deaktiver CORS helt for maksimal sikkerhed",
+            "D": "Tillad kun lokale domæner (localhost)"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ '*' er farligt i produktion - det tillader alle domæner at kalde dit API.",
+            "B": "✅ Kun godkendte domæner bør have adgang i produktion.",
+            "C": "❌ At deaktivere CORS helt vil ødelægge legitim frontend-funktionalitet.",
+            "D": "❌ Kun localhost vil ikke virke når din applikation deployes."
+          },
+          "learnMore": {
+            "title": "Secure CORS Configuration",
+            "description": "En guide til sikker CORS-konfiguration i produktion.",
+            "url": "https://learn.microsoft.com/en-us/aspnet/core/security/cors",
+            "type": "docs",
+            "icon": "fas fa-cog"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rate-limiting-security",
+      "title": "Rate Limiting & Sikkerhed",
+      "description": "Test din viden om rate limiting, brute force beskyttelse og login sikkerhed",
+      "category": "Sikkerhed",
+      "difficulty": "Mellem",
+      "estimatedTime": "8-12 minutter",
+      "questions": [
+        {
+          "id": 1,
+          "questionText": "Hvad er hovedformålet med rate limiting i login endpoints?",
+          "options": {
+            "A": "At øge server-performance ved at begrænse antal requests",
+            "B": "At forhindre brute force angreb ved at begrænse login forsøg",
+            "C": "At spare database-ressourcer ved at cache login data",
+            "D": "At forbedre brugeroplevelsen ved hurtigere login"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Performance er en bivirkning, ikke hovedformålet.",
+            "B": "✅ Rate limiting beskytter mod automatiserede angreb der prøver at gætte passwords.",
+            "C": "❌ Database-ressourcer er ikke hovedformålet med rate limiting.",
+            "D": "❌ Rate limiting kan faktisk gøre login langsommere ved mislykkede forsøg."
+          },
+          "learnMore": {
+            "title": "Brute Force Protection",
+            "description": "OWASP guide til at forhindre brute force angreb.",
+            "url": "https://owasp.org/www-community/attacks/Brute_force_attack",
+            "type": "article",
+            "icon": "fas fa-shield-alt"
+          }
+        },
+        {
+          "id": 2,
+          "questionText": "Hvilken HTTP status kode returneres når en konto er låst på grund af for mange mislykkede login forsøg?",
+          "options": {
+            "A": "401 Unauthorized",
+            "B": "403 Forbidden",
+            "C": "429 Too Many Requests",
+            "D": "503 Service Unavailable"
+          },
+          "correctAnswers": ["C"],
+          "explanations": {
+            "A": "❌ 401 bruges ved forkerte credentials, ikke når kontoen er låst.",
+            "B": "❌ 403 bruges ved autorisationsfejl, ikke rate limiting.",
+            "C": "✅ 429 'Too Many Requests' er standard status kode for rate limiting.",
+            "D": "❌ 503 bruges når serveren er nede, ikke ved rate limiting."
+          },
+          "learnMore": {
+            "title": "HTTP Status Codes for Rate Limiting",
+            "description": "Microsofts guide til HTTP status koder og deres brug.",
+            "url": "https://learn.microsoft.com/en-us/aspnet/core/web-api/?view=aspnetcore-8.0#http-status-codes",
+            "type": "docs",
+            "icon": "fas fa-code"
+          }
+        },
+        {
+          "id": 3,
+          "questionText": "Hvad betyder 'progressive delays' i rate limiting?",
+          "options": {
+            "A": "At alle brugere får længere ventetid efterhånden som dagen går",
+            "B": "At hver mislykket login forsøg resulterer i længere ventetid før næste forsøg",
+            "C": "At serveren automatisk lukker ned efter et bestemt antal requests",
+            "D": "At brugere får forskellige ventetider baseret på deres rolle"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Progressive delays er ikke baseret på tid på dagen.",
+            "B": "✅ Hver fejl øger ventetiden, hvilket gør brute force angreb ineffektive.",
+            "C": "❌ Serveren lukker ikke ned - den påfører kun ventetider.",
+            "D": "❌ Ventetider er baseret på antal fejl, ikke brugerroller."
+          },
+          "learnMore": {
+            "title": "Progressive Delays in Security",
+            "description": "En artikel om progressive delays som sikkerhedsteknik.",
+            "url": "https://auth0.com/blog/brute-forcing-hashes/",
+            "type": "article",
+            "icon": "fas fa-clock"
+          }
+        },
+        {
+          "id": 4,
+          "questionText": "Hvorfor er det vigtigt at rydde fejl-cache ved succesfuldt login?",
+          "options": {
+            "A": "At spare hukommelse på serveren",
+            "B": "At give brugeren en frisk start og fjerne eventuelle lockouts",
+            "C": "At forbedre database-performance",
+            "D": "At sikre at alle brugere får samme ventetid"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Hukommelse er ikke hovedformålet - sikkerhed er vigtigere.",
+            "B": "✅ Succesfuldt login bekræfter at brugeren er legitim, så lockouts og delays fjernes.",
+            "C": "❌ Database-performance påvirkes ikke af fejl-cache.",
+            "D": "❌ Alle brugere får ikke samme ventetid - det afhænger af deres fejlhistorik."
+          },
+          "learnMore": {
+            "title": "Cache Management in Security",
+            "description": "Best practices for cache management i sikkerhedskritiske applikationer.",
+            "url": "https://learn.microsoft.com/en-us/aspnet/core/performance/caching/memory",
+            "type": "docs",
+            "icon": "fas fa-database"
+          }
+        },
+        {
+          "id": 5,
+          "questionText": "Hvad er en 'account lockout' i rate limiting?",
+          "options": {
+            "A": "En permanent blokering af en konto efter forkerte passwords",
+            "B": "En midlertidig blokering af login-forsøg efter et bestemt antal fejl",
+            "C": "En automatisk sletning af brugerdata ved mistænkelig aktivitet",
+            "D": "En besked til administratoren om at gennemgå en konto"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Lockouts er midlertidige, ikke permanente.",
+            "B": "✅ Kontoen låses midlertidigt for at forhindre vedvarende angreb.",
+            "C": "❌ Data slettes ikke automatisk - kun login-forsøg blokeres.",
+            "D": "❌ Det kan være en del af monitoring, men er ikke selve lockout-funktionen."
+          },
+          "learnMore": {
+            "title": "Account Lockout Strategies",
+            "description": "Strategier for account lockout og recovery.",
+            "url": "https://learn.microsoft.com/en-us/azure/active-directory/authentication/concept-authentication-strengths",
+            "type": "docs",
+            "icon": "fas fa-user-lock"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bogus-faker",
+      "title": "Bogus (Faker) - Test Data Generering",
+      "description": "Test din viden om Bogus biblioteket, hvordan man genererer realistisk test data og best practices for data seeding",
+      "category": "C#",
+      "difficulty": "Mellem",
+      "estimatedTime": "10-15 minutter",
+      "questions": [
+        {
+          "id": 1,
+          "questionText": "Hvad er hovedformålet med Bogus (Faker) biblioteket?",
+          "options": {
+            "A": "At kryptere data i produktion",
+            "B": "At generere realistisk test data til development og testing",
+            "C": "At optimere database performance",
+            "D": "At validere bruger-input"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Bogus er ikke til kryptering af produktion data.",
+            "B": "✅ Bogus er designet til at generere realistisk test data til development og testing formål.",
+            "C": "❌ Database performance er ikke hovedformålet med Bogus.",
+            "D": "❌ Input validering er ikke det Bogus bruges til."
+          },
+          "learnMore": {
+            "title": "Bogus Documentation",
+            "description": "Officiel dokumentation for Bogus biblioteket og dets formål.",
+            "url": "https://github.com/bchavez/Bogus",
+            "type": "docs",
+            "icon": "fas fa-book-open"
+          }
+        },
+        {
+          "id": 2,
+          "questionText": "Hvad er en af hovedfordelene ved at bruge Bogus i stedet for hardcodede test værdier?",
+          "options": {
+            "A": "Det gør koden hurtigere at køre",
+            "B": "Det giver varieret, realistisk data der kan opdage edge cases",
+            "C": "Det eliminerer behovet for unit tests",
+            "D": "Det reducerer hukommelsesforbruget"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Bogus påvirker ikke kode-performance direkte.",
+            "B": "✅ Realistisk data hjælper med at opdage problemer som hardcodede værdier ikke kan.",
+            "C": "❌ Bogus erstatter ikke unit tests - det forbedrer dem.",
+            "D": "❌ Hukommelsesforbrug påvirkes ikke af valg af test data."
+          },
+          "learnMore": {
+            "title": "Why Use Fake Data in Testing",
+            "description": "En forklaring af fordelene ved realistisk test data.",
+            "url": "https://www.baeldung.com/java-faker-library",
+            "type": "article",
+            "icon": "fas fa-test-tube"
+          }
+        },
+        {
+          "id": 3,
+          "questionText": "Hvornår bør du IKKE bruge Bogus?",
+          "options": {
+            "A": "I development miljøer",
+            "B": "I produktion miljøer",
+            "C": "I unit tests",
+            "D": "I integration tests"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Development miljøer er netop hvor Bogus er nyttigt.",
+            "B": "✅ Bogus bør aldrig bruges i produktion - kun i development og testing.",
+            "C": "❌ Unit tests er et perfekt sted at bruge Bogus.",
+            "D": "❌ Integration tests kan også drage fordel af Bogus."
+          },
+          "learnMore": {
+            "title": "Bogus Security Considerations",
+            "description": "Vigtige sikkerhedsaspekter ved brug af Bogus.",
+            "url": "https://github.com/bchavez/Bogus#security",
+            "type": "docs",
+            "icon": "fas fa-shield-alt"
+          }
+        },
+        {
+          "id": 4,
+          "questionText": "Hvad er formålet med at bruge seeds i Bogus?",
+          "options": {
+            "A": "At gøre data generation hurtigere",
+            "B": "At sikre reproducerbare tests med samme data hver gang",
+            "C": "At kryptere genererede data",
+            "D": "At reducere hukommelsesforbrug"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Seeds påvirker ikke hastigheden af data generation.",
+            "B": "✅ Seeds sikrer at samme data genereres hver gang, hvilket gør tests reproducerbare.",
+            "C": "❌ Seeds er ikke til kryptering.",
+            "D": "❌ Seeds påvirker ikke hukommelsesforbrug."
+          },
+          "learnMore": {
+            "title": "Bogus Seeding",
+            "description": "Guide til at bruge seeds i Bogus for reproducerbare tests.",
+            "url": "https://github.com/bchavez/Bogus#seeding",
+            "type": "docs",
+            "icon": "fas fa-seedling"
+          }
+        },
+        {
+          "id": 5,
+          "questionText": "Hvad er en best practice ved brug af Bogus i relationelle databaser?",
+          "options": {
+            "A": "Altid generere alle data samtidigt i én operation",
+            "B": "Generere forældre-entiteter først, derefter afhængige entiteter",
+            "C": "Ignorere foreign key constraints",
+            "D": "Bruge samme ID for alle genererede entiteter"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ At generere alt samtidigt kan skabe problemer med relationer.",
+            "B": "✅ Du skal generere forældre først for at kunne referere til dem i afhængige entiteter.",
+            "C": "❌ Foreign key constraints skal respekteres for at opretholde dataintegritet.",
+            "D": "❌ Unikke ID'er er vigtige for at undgå konflikter."
+          },
+          "learnMore": {
+            "title": "Database Seeding Best Practices",
+            "description": "Best practices for at seed relationelle databaser med test data.",
+            "url": "https://learn.microsoft.com/en-us/ef/core/modeling/data-seeding",
+            "type": "docs",
+            "icon": "fas fa-database"
+          }
+        },
+        {
+          "id": 6,
+          "questionText": "Hvad er formålet med lokalisering i Bogus?",
+          "options": {
+            "A": "At gøre data generation hurtigere",
+            "B": "At generere data der matcher et bestemt sprog/region (f.eks. danske navne og adresser)",
+            "C": "At reducere hukommelsesforbrug",
+            "D": "At kryptere genererede data"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Lokalisering påvirker ikke hastighed.",
+            "B": "✅ Lokalisering sikrer at data matcher det ønskede sprog/region (danske navne, adresser osv.).",
+            "C": "❌ Lokalisering påvirker ikke hukommelsesforbrug.",
+            "D": "❌ Lokalisering er ikke til kryptering."
+          },
+          "learnMore": {
+            "title": "Bogus Localization",
+            "description": "Guide til at bruge lokalisering i Bogus for region-specifik data.",
+            "url": "https://github.com/bchavez/Bogus#localization",
+            "type": "docs",
+            "icon": "fas fa-globe"
+          }
+        },
+        {
+          "id": 7,
+          "questionText": "Hvad er en vigtig best practice ved brug af Bogus i API testing?",
+          "options": {
+            "A": "Altid generere maksimalt antal records for at teste performance",
+            "B": "Generere kun det antal records der er nødvendige for testen",
+            "C": "Ignorere data validering i genererede objekter",
+            "D": "Bruge hardcodede værdier sammen med Bogus"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ At generere for mange records kan gøre tests langsomme og unødvendige.",
+            "B": "✅ Generer kun det antal records der er nødvendige for at teste funktionaliteten.",
+            "C": "❌ Data validering er vigtig selv for genererede objekter.",
+            "D": "❌ Blanding af hardcodede værdier og Bogus kan skabe inkonsistens."
+          },
+          "learnMore": {
+            "title": "API Testing Best Practices",
+            "description": "Best practices for API testing med test data.",
+            "url": "https://learn.microsoft.com/en-us/aspnet/core/testing/integration-tests",
+            "type": "docs",
+            "icon": "fas fa-code"
+          }
+        },
+        {
+          "id": 8,
+          "questionText": "Hvad er formålet med betingede regler i Bogus?",
+          "options": {
+            "A": "At gøre data generation hurtigere",
+            "B": "At skabe relationer mellem forskellige felter i samme entitet",
+            "C": "At reducere hukommelsesforbrug",
+            "D": "At kryptere genererede data"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Betingede regler påvirker ikke hastighed.",
+            "B": "✅ Betingede regler tillader dig at skabe realistiske relationer mellem felter (f.eks. alder påvirker indkomst).",
+            "C": "❌ Betingede regler påvirker ikke hukommelsesforbrug.",
+            "D": "❌ Betingede regler er ikke til kryptering."
+          },
+          "learnMore": {
+            "title": "Bogus Conditional Rules",
+            "description": "Guide til at bruge betingede regler i Bogus for realistisk data.",
+            "url": "https://github.com/bchavez/Bogus#rules",
+            "type": "docs",
+            "icon": "fas fa-link"
+          }
+        },
+        {
+          "id": 9,
+          "questionText": "Hvad er en fordel ved at bruge Bogus i stedet for manuel test data oprettelse?",
+          "options": {
+            "A": "Det eliminerer behovet for at skrive kode",
+            "B": "Det sparer tid og sikrer konsistent data struktur",
+            "C": "Det gør alle tests automatisk grønne",
+            "D": "Det eliminerer behovet for database"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Du skal stadig skrive kode til at definere Bogus regler.",
+            "B": "✅ Bogus sparer tid på manuel data oprettelse og sikrer konsistent struktur.",
+            "C": "❌ Bogus garanterer ikke at tests passerer - det giver kun test data.",
+            "D": "❌ Bogus eliminerer ikke behovet for database - det hjælper med at populere den."
+          },
+          "learnMore": {
+            "title": "Benefits of Automated Test Data",
+            "description": "Fordele ved automatiseret test data generation.",
+            "url": "https://www.c-sharpcorner.com/article/automated-test-data-generation-using-bogus/",
+            "type": "article",
+            "icon": "fas fa-clock"
+          }
+        },
+        {
+          "id": 10,
+          "questionText": "Hvad er en vigtig sikkerhedsforanstaltning ved brug af Bogus?",
+          "options": {
+            "A": "Altid kryptere genererede data",
+            "B": "Kun bruge Bogus i development og test miljøer, aldrig i produktion",
+            "C": "Ignorere alle sikkerhedsadvarsler",
+            "D": "Bruge samme data i alle miljøer"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Kryptering af test data er ikke nødvendig.",
+            "B": "✅ Bogus bør kun bruges i development og test miljøer for at undgå sikkerhedsrisici.",
+            "C": "❌ Sikkerhedsadvarsler skal aldrig ignoreres.",
+            "D": "❌ Forskellige miljøer bør have forskellige data."
+          },
+          "learnMore": {
+            "title": "Environment-Specific Configuration",
+            "description": "Guide til at konfigurere applikationer for forskellige miljøer.",
+            "url": "https://learn.microsoft.com/en-us/aspnet/core/fundamentals/environments",
+            "type": "docs",
+            "icon": "fas fa-cog"
+          }
+        }
+      ]
+    },
+    {
+      "id": "efcore-linq-querying",
+      "title": "EF Core & LINQ Querying - Avancerede Koncepter",
+      "description": "Test din viden om EF Core querying, Eager vs Lazy Loading, filtering, sorting og RESTful conventions",
+      "category": "C#",
+      "difficulty": "Avanceret",
+      "estimatedTime": "15-20 minutter",
+      "questions": [
+        {
+          "id": 1,
+          "questionText": "Hvad er hovedforskellen mellem Eager Loading og Lazy Loading i EF Core?",
+          "options": {
+            "A": "Eager Loading er hurtigere end Lazy Loading",
+            "B": "Eager Loading henter relateret data med det samme, Lazy Loading venter til det tilgås",
+            "C": "Lazy Loading kræver mindre hukommelse end Eager Loading",
+            "D": "Eager Loading virker kun med SQL Server, Lazy Loading virker med alle databaser"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Hastighed afhænger af situationen - ikke altid hurtigere.",
+            "B": "✅ Eager Loading henter alt relateret data i én forespørgsel, mens Lazy Loading henter når det tilgås.",
+            "C": "❌ Hukommelsesforbrug afhænger af data mængden, ikke loading typen.",
+            "D": "❌ Begge loading typer virker med alle EF Core understøttede databaser."
+          },
+          "learnMore": {
+            "title": "EF Core Loading Patterns",
+            "description": "Guide til Eager vs Lazy Loading i Entity Framework Core.",
+            "url": "https://learn.microsoft.com/en-us/ef/core/querying/related-data",
+            "type": "docs",
+            "icon": "fas fa-database"
+          }
+        },
+        {
+          "id": 2,
+          "questionText": "Hvad er N+1 problemet i forbindelse med Lazy Loading?",
+          "options": {
+            "A": "At der genereres for mange SQL forespørgsler når man tilgår relateret data",
+            "B": "At der bruges for meget hukommelse til at cache data",
+            "C": "At der er for mange relationer mellem entiteter",
+            "D": "At der er for mange felter i hver entitet"
+          },
+          "correctAnswers": ["A"],
+          "explanations": {
+            "A": "✅ N+1 problemet opstår når man henter N hovedobjekter og derefter 1 forespørgsel per relateret objekt.",
+            "B": "❌ Hukommelsesforbrug er ikke det primære problem med N+1.",
+            "C": "❌ Antal relationer er ikke problemet - det er måden data hentes på.",
+            "D": "❌ Antal felter påvirker ikke N+1 problemet."
+          },
+          "learnMore": {
+            "title": "N+1 Query Problem",
+            "description": "Forklaring af N+1 problemet og hvordan man løser det.",
+            "url": "https://learn.microsoft.com/en-us/ef/core/querying/related-data#eager-loading",
+            "type": "docs",
+            "icon": "fas fa-exclamation-triangle"
+          }
+        },
+        {
+          "id": 3,
+          "questionText": "Hvordan bruger du Eager Loading til at hente en booking med bruger og værelse?",
+          "options": {
+            "A": "var booking = _context.Bookings.Include(b => b.User).Include(b => b.Room).FirstOrDefault()",
+            "B": "var booking = _context.Bookings.Load(b => b.User).Load(b => b.Room).FirstOrDefault()",
+            "C": "var booking = _context.Bookings.With(b => b.User).With(b => b.Room).FirstOrDefault()",
+            "D": "var booking = _context.Bookings.Join(b => b.User).Join(b => b.Room).FirstOrDefault()"
+          },
+          "correctAnswers": ["A"],
+          "explanations": {
+            "A": "✅ Include() er den korrekte metode til Eager Loading i EF Core.",
+            "B": "❌ Load() eksisterer ikke i EF Core.",
+            "C": "❌ With() er ikke en EF Core metode.",
+            "D": "❌ Join() bruges til SQL JOINs, ikke til Eager Loading."
+          },
+          "learnMore": {
+            "title": "EF Core Include Method",
+            "description": "Dokumentation for Include() metoden i EF Core.",
+            "url": "https://learn.microsoft.com/en-us/ef/core/querying/related-data#eager-loading",
+            "type": "docs",
+            "icon": "fas fa-code"
+          }
+        },
+        {
+          "id": 4,
+          "questionText": "Hvad er formålet med .AsQueryable() når man bygger dynamiske queries?",
+          "options": {
+            "A": "At gøre queries hurtigere",
+            "B": "At tillade dynamisk tilføjelse af Where() og OrderBy() klausuler",
+            "C": "At reducere hukommelsesforbrug",
+            "D": "At sikre at queries er type-safe"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ .AsQueryable() påvirker ikke hastighed direkte.",
+            "B": "✅ .AsQueryable() giver dig mulighed for at bygge queries dynamisk med Where(), OrderBy() osv.",
+            "C": "❌ Hukommelsesforbrug påvirkes ikke af .AsQueryable().",
+            "D": "❌ Type-safety er ikke hovedformålet med .AsQueryable()."
+          },
+          "learnMore": {
+            "title": "Dynamic Queries in EF Core",
+            "description": "Guide til at bygge dynamiske queries i EF Core.",
+            "url": "https://learn.microsoft.com/en-us/ef/core/querying/dynamic-queries",
+            "type": "docs",
+            "icon": "fas fa-magic"
+          }
+        },
+        {
+          "id": 5,
+          "questionText": "Hvordan implementerer du filtering baseret på query parameters?",
+          "options": {
+            "A": "Altid bruge hardcodede WHERE klausuler",
+            "B": "Bruge [FromQuery] attribut og bygge queries dynamisk med .Where()",
+            "C": "Kun tillade filtering på foruddefinerede felter",
+            "D": "Ignorere filtering og returnere alt data"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Hardcodede WHERE klausuler giver ikke fleksibilitet.",
+            "B": "✅ [FromQuery] med dynamisk .Where() giver fleksibel filtering baseret på bruger input.",
+            "C": "❌ Begrænsning til foruddefinerede felter reducerer fleksibilitet.",
+            "D": "❌ At ignorere filtering kan give performance problemer og dårlig brugeroplevelse."
+          },
+          "learnMore": {
+            "title": "Query Parameters in ASP.NET Core",
+            "description": "Guide til at håndtere query parameters i ASP.NET Core controllers.",
+            "url": "https://learn.microsoft.com/en-us/aspnet/core/web-api/action-return-types",
+            "type": "docs",
+            "icon": "fas fa-filter"
+          }
+        },
+        {
+          "id": 6,
+          "questionText": "Hvad er den korrekte måde at implementere dynamisk sorting på?",
+          "options": {
+            "A": "Altid bruge OrderBy() på ID feltet",
+            "B": "Bruge en switch statement til at vælge sorteringsfelt og retning",
+            "C": "Kun tillade sortering på navn feltet",
+            "D": "Ignorere sortering og returnere data i database rækkefølge"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ At altid sortere på ID giver ikke brugeren kontrol.",
+            "B": "✅ En switch statement giver fleksibel kontrol over sorteringsfelt og retning.",
+            "C": "❌ Begrænsning til kun navn feltet reducerer funktionalitet.",
+            "D": "❌ Database rækkefølge er ikke altid den ønskede rækkefølge."
+          },
+          "learnMore": {
+            "title": "Dynamic Sorting in LINQ",
+            "description": "Guide til at implementere dynamisk sorting i LINQ queries.",
+            "url": "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/",
+            "type": "docs",
+            "icon": "fas fa-sort"
+          }
+        },
+        {
+          "id": 7,
+          "questionText": "Hvad er en RESTful route konvention?",
+          "options": {
+            "A": "At bruge HTTP metoder til at angive handlinger på ressourcer",
+            "B": "At altid bruge POST til alle operationer",
+            "C": "At bruge camelCase i route navne",
+            "D": "At bruge ental i collection endpoints"
+          },
+          "correctAnswers": ["A"],
+          "explanations": {
+            "A": "✅ RESTful konventioner bruger HTTP metoder (GET, POST, PUT, DELETE) til at angive handlinger på ressourcer.",
+            "B": "❌ POST bør kun bruges til at oprette nye ressourcer.",
+            "C": "❌ Route navne bør være lowercase med bindestreger, ikke camelCase.",
+            "D": "❌ Collection endpoints bør bruge flertal (f.eks. /rooms ikke /room)."
+          },
+          "learnMore": {
+            "title": "REST API Design",
+            "description": "Best practices for REST API design og konventioner.",
+            "url": "https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design",
+            "type": "docs",
+            "icon": "fas fa-route"
+          }
+        },
+        {
+          "id": 8,
+          "questionText": "Hvad er den korrekte route for at hente alle værelser i et hotel?",
+          "options": {
+            "A": "GET /hotels/{id}/rooms",
+            "B": "GET /rooms?hotelId={id}",
+            "C": "GET /getRoomsForHotel?id={id}",
+            "D": "GET /hotelRooms/{hotelId}"
+          },
+          "correctAnswers": ["A"],
+          "explanations": {
+            "A": "✅ /hotels/{id}/rooms følger RESTful konventioner for nested ressourcer.",
+            "B": "❌ Dette er en query parameter tilgang, ikke en nested resource route.",
+            "C": "❌ 'getRoomsForHotel' er ikke RESTful - brug HTTP metoder i stedet.",
+            "D": "❌ 'hotelRooms' er ikke en standard RESTful konvention."
+          },
+          "learnMore": {
+            "title": "Nested Resources in REST",
+            "description": "Guide til at håndtere nested ressourcer i REST APIs.",
+            "url": "https://restfulapi.net/resource-naming/",
+            "type": "docs",
+            "icon": "fas fa-sitemap"
+          }
+        },
+        {
+          "id": 9,
+          "questionText": "Hvad er formålet med .ThenInclude() i EF Core?",
+          "options": {
+            "A": "At tilføje WHERE betingelser til en query",
+            "B": "At inkludere nested relateret data (f.eks. hotel fra room fra booking)",
+            "C": "At sortere resultater",
+            "D": "At begrænse antal returnerede records"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ WHERE betingelser tilføjes med .Where(), ikke .ThenInclude().",
+            "B": "✅ .ThenInclude() bruges til at inkludere nested relateret data (f.eks. hotel fra room fra booking).",
+            "C": "❌ Sortering håndteres med .OrderBy(), ikke .ThenInclude().",
+            "D": "❌ Antal records begrænses med .Take(), ikke .ThenInclude()."
+          },
+          "learnMore": {
+            "title": "EF Core ThenInclude",
+            "description": "Dokumentation for ThenInclude() metoden i EF Core.",
+            "url": "https://learn.microsoft.com/en-us/ef/core/querying/related-data#including-multiple-levels",
+            "type": "docs",
+            "icon": "fas fa-layer-group"
+          }
+        },
+        {
+          "id": 10,
+          "questionText": "Hvornår bør du bruge projection (.Select()) i stedet for .Include()?",
+          "options": {
+            "A": "Altid bruge .Include() for bedre performance",
+            "B": "Når du kun skal bruge specifikke felter fra relateret data",
+            "C": "Kun når du arbejder med store datamængder",
+            "D": "Når du vil have alle felter fra alle relaterede entiteter"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ .Include() henter hele objekter, hvilket kan være ineffektivt hvis du kun skal bruge få felter.",
+            "B": "✅ .Select() er bedre når du kun skal bruge specifikke felter, da det reducerer data transfer.",
+            "C": "❌ .Select() er nyttigt uanset datamængde når du kun skal bruge specifikke felter.",
+            "D": "❌ Hvis du vil have alle felter, så brug .Include() i stedet."
+          },
+          "learnMore": {
+            "title": "EF Core Projection",
+            "description": "Guide til at bruge projection i EF Core for bedre performance.",
+            "url": "https://learn.microsoft.com/en-us/ef/core/querying/projections",
+            "type": "docs",
+            "icon": "fas fa-chart-line"
+          }
+        }
+      ]
+    },
+    {
+      "id": "caching-redis",
+      "title": "Caching med Redis - Performance Optimering",
+      "description": "Test din viden om caching strategier, Redis implementering og performance optimering i .NET",
+      "category": "C#",
+      "difficulty": "Avanceret",
+      "estimatedTime": "15-20 minutter",
+      "questions": [
+        {
+          "id": 1,
+          "questionText": "Hvad er hovedformålet med caching i en API?",
+          "options": {
+            "A": "At reducere hukommelsesforbrug",
+            "B": "At forbedre performance ved at undgå gentagne database kald",
+            "C": "At sikre data konsistens",
+            "D": "At reducere netværk trafik"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Caching kan faktisk øge hukommelsesforbrug ved at gemme data i hukommelsen.",
+            "B": "✅ Caching forbedrer performance ved at undgå gentagne database kald for samme data.",
+            "C": "❌ Caching kan faktisk skabe data konsistens problemer hvis ikke håndteret korrekt.",
+            "D": "❌ Netværk trafik reduceres kun hvis cache er på samme server som API'en."
+          },
+          "learnMore": {
+            "title": "Caching Fundamentals",
+            "description": "Grundlæggende koncepter om caching og dets fordele.",
+            "url": "https://learn.microsoft.com/en-us/aspnet/core/performance/caching/overview",
+            "type": "docs",
+            "icon": "fas fa-tachometer-alt"
+          }
+        },
+        {
+          "id": 2,
+          "questionText": "Hvad er forskellen mellem IMemoryCache og IDistributedCache?",
+          "options": {
+            "A": "IMemoryCache er hurtigere end IDistributedCache",
+            "B": "IMemoryCache er lokal til serveren, IDistributedCache kan deles mellem servere",
+            "C": "IMemoryCache kræver mere konfiguration end IDistributedCache",
+            "D": "IDistributedCache virker kun med Redis"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Hastighed afhænger af implementering, ikke interfacet.",
+            "B": "✅ IMemoryCache er lokal til serveren, mens IDistributedCache kan deles mellem flere servere.",
+            "C": "❌ IMemoryCache kræver mindre konfiguration end IDistributedCache.",
+            "D": "❌ IDistributedCache kan implementeres med Redis, SQL Server, eller andre providers."
+          },
+          "learnMore": {
+            "title": "Cache Types in .NET",
+            "description": "Forklaring af forskellige cache typer i .NET.",
+            "url": "https://learn.microsoft.com/en-us/aspnet/core/performance/caching/distributed",
+            "type": "docs",
+            "icon": "fas fa-server"
+          }
+        },
+        {
+          "id": 3,
+          "questionText": "Hvordan definerer du en cache nøgle i .NET?",
+          "options": {
+            "A": "Cache nøgler genereres automatisk af framework'et",
+            "B": "Du skal altid bruge en GUID som cache nøgle",
+            "C": "Du definerer en string der beskriver dataen der caches",
+            "D": "Cache nøgler skal være numeriske"
+          },
+          "correctAnswers": ["C"],
+          "explanations": {
+            "A": "❌ Framework'et genererer ikke automatisk cache nøgler.",
+            "B": "❌ GUIDs er ikke nødvendige - beskrivende strings er bedre.",
+            "C": "✅ Cache nøgler bør være beskrivende strings der identificerer dataen (f.eks. 'all_rooms', 'user_123').",
+            "D": "❌ Cache nøgler kan være strings, ikke kun numeriske værdier."
+          },
+          "learnMore": {
+            "title": "Cache Keys Best Practices",
+            "description": "Best practices for at designe cache nøgler.",
+            "url": "https://learn.microsoft.com/en-us/aspnet/core/performance/caching/overview#cache-keys",
+            "type": "docs",
+            "icon": "fas fa-key"
+          }
+        },
+        {
+          "id": 4,
+          "questionText": "Hvad sker der når du kalder _cache.TryGetValue()?",
+          "options": {
+            "A": "Data hentes altid fra databasen",
+            "B": "Metoden returnerer true hvis data findes i cache, false hvis ikke",
+            "C": "Cache'et bliver automatisk ryddet",
+            "D": "Data bliver automatisk opdateret i cache'et"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ TryGetValue() henter kun fra cache, ikke fra database.",
+            "B": "✅ TryGetValue() returnerer true hvis data findes i cache, false hvis ikke, og output parameteren indeholder dataen.",
+            "C": "❌ Cache'et ryddes ikke automatisk af TryGetValue().",
+            "D": "❌ Data opdateres ikke automatisk af TryGetValue()."
+          },
+          "learnMore": {
+            "title": "TryGetValue Method",
+            "description": "Dokumentation for TryGetValue() metoden i IMemoryCache.",
+            "url": "https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.memory.imemorycache.trygetvalue",
+            "type": "docs",
+            "icon": "fas fa-search"
+          }
+        },
+        {
+          "id": 5,
+          "questionText": "Hvordan sætter du data i cache med en bestemt levetid?",
+          "options": {
+            "A": "_cache.Set(key, data)",
+            "B": "_cache.Set(key, data, TimeSpan.FromMinutes(30))",
+            "C": "_cache.Add(key, data, TimeSpan.FromMinutes(30))",
+            "D": "_cache.Store(key, data, 30)"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Uden TimeSpan parameter caches dataen uden udløbsdato.",
+            "B": "✅ _cache.Set(key, data, TimeSpan.FromMinutes(30)) caches dataen i 30 minutter.",
+            "C": "❌ Add() metoden eksisterer ikke i IMemoryCache.",
+            "D": "❌ Store() metoden eksisterer ikke i IMemoryCache."
+          },
+          "learnMore": {
+            "title": "Cache Expiration",
+            "description": "Guide til at sætte cache udløbsdatoer i .NET.",
+            "url": "https://learn.microsoft.com/en-us/aspnet/core/performance/caching/overview#cache-expiration",
+            "type": "docs",
+            "icon": "fas fa-clock"
+          }
+        },
+        {
+          "id": 6,
+          "questionText": "Hvad er cache invalidation?",
+          "options": {
+            "A": "At rydde hele cache'et automatisk",
+            "B": "At fjerne specifikke cache entries når data ændrer sig",
+            "C": "At reducere cache størrelsen",
+            "D": "At kryptere cache data"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Cache invalidation handler om specifikke entries, ikke hele cache'et.",
+            "B": "✅ Cache invalidation er at fjerne specifikke cache entries når de underliggende data ændrer sig.",
+            "C": "❌ Cache størrelse reduceres ikke automatisk ved invalidation.",
+            "D": "❌ Kryptering er ikke relateret til cache invalidation."
+          },
+          "learnMore": {
+            "title": "Cache Invalidation",
+            "description": "Strategier for cache invalidation i .NET.",
+            "url": "https://learn.microsoft.com/en-us/aspnet/core/performance/caching/overview#cache-invalidation",
+            "type": "docs",
+            "icon": "fas fa-trash"
+          }
+        },
+        {
+          "id": 7,
+          "questionText": "Hvornår bør du IKKE cache data?",
+          "options": {
+            "A": "Når data ændrer sig ofte",
+            "B": "Når data er statisk og sjældent ændrer sig",
+            "C": "Når data er offentlig og ikke følsom",
+            "D": "Når data bruges af mange brugere"
+          },
+          "correctAnswers": ["A"],
+          "explanations": {
+            "A": "✅ Data der ændrer sig ofte bør ikke caches, da det kan give forkerte resultater.",
+            "B": "❌ Statisk data er perfekt til caching.",
+            "C": "❌ Offentlig data kan ofte caches sikkert.",
+            "D": "❌ Data der bruges af mange brugere er netop godt til caching."
+          },
+          "learnMore": {
+            "title": "When Not to Cache",
+            "description": "Guide til at identificere data der ikke bør caches.",
+            "url": "https://learn.microsoft.com/en-us/aspnet/core/performance/caching/overview#when-to-cache",
+            "type": "docs",
+            "icon": "fas fa-exclamation-circle"
+          }
+        },
+        {
+          "id": 8,
+          "questionText": "Hvad er fordelene ved Redis over IMemoryCache?",
+          "options": {
+            "A": "Redis er altid hurtigere end IMemoryCache",
+            "B": "Redis kan deles mellem flere servere og overleve server restarts",
+            "C": "Redis kræver mindre konfiguration end IMemoryCache",
+            "D": "Redis bruger mindre hukommelse end IMemoryCache"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Hastighed afhænger af netværk og Redis konfiguration.",
+            "B": "✅ Redis kan deles mellem flere servere og overlever server restarts, hvilket IMemoryCache ikke kan.",
+            "C": "❌ Redis kræver mere konfiguration end IMemoryCache.",
+            "D": "❌ Redis bruger ikke mindre hukommelse - det kører som en separat proces."
+          },
+          "learnMore": {
+            "title": "Redis vs Memory Cache",
+            "description": "Sammenligning af Redis og IMemoryCache i .NET.",
+            "url": "https://learn.microsoft.com/en-us/aspnet/core/performance/caching/distributed#redis",
+            "type": "docs",
+            "icon": "fas fa-balance-scale"
+          }
+        },
+        {
+          "id": 9,
+          "questionText": "Hvordan implementerer du Redis caching i .NET?",
+          "options": {
+            "A": "Redis er indbygget i .NET og kræver ingen ekstra konfiguration",
+            "B": "Du skal installere Redis package og konfigurere IDistributedCache",
+            "C": "Redis kan kun bruges med Azure",
+            "D": "Redis kræver at du skriver custom caching kode"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ Redis er ikke indbygget i .NET - det kræver ekstra packages.",
+            "B": "✅ Du skal installere Redis package og konfigurere IDistributedCache i Program.cs.",
+            "C": "❌ Redis kan køre lokalt, i Docker, eller på Azure - det er ikke Azure-specifikt.",
+            "D": "❌ Du behøver ikke skrive custom caching kode - IDistributedCache giver standard interface."
+          },
+          "learnMore": {
+            "title": "Redis Setup in .NET",
+            "description": "Guide til at opsætte Redis caching i .NET applikationer.",
+            "url": "https://learn.microsoft.com/en-us/aspnet/core/performance/caching/distributed#redis",
+            "type": "docs",
+            "icon": "fas fa-database"
+          }
+        },
+        {
+          "id": 10,
+          "questionText": "Hvad er en god cache levetid for en værelsesliste?",
+          "options": {
+            "A": "1 sekund - for at sikre data er altid frisk",
+            "B": "30-60 sekunder - for at balancere performance og data friskhed",
+            "C": "24 timer - for maksimal performance",
+            "D": "Aldrig - værelseslister bør aldrig caches"
+          },
+          "correctAnswers": ["B"],
+          "explanations": {
+            "A": "❌ 1 sekund giver minimal performance forbedring og øger database belastning.",
+            "B": "✅ 30-60 sekunder giver god performance forbedring uden at data bliver for gammelt.",
+            "C": "❌ 24 timer kan give forkerte data hvis værelser tilføjes eller fjernes.",
+            "D": "❌ Værelseslister kan caches sikkert med passende levetid."
+          },
+          "learnMore": {
+            "title": "Cache Duration Guidelines",
+            "description": "Retningslinjer for at vælge cache levetider.",
+            "url": "https://learn.microsoft.com/en-us/aspnet/core/performance/caching/overview#cache-expiration",
+            "type": "docs",
+            "icon": "fas fa-hourglass-half"
           }
         }
       ]
