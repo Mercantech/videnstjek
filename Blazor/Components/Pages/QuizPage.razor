@@ -2,6 +2,7 @@
 @page "/quiz/{QuizId}"
 @using Blazor.Service
 @using Blazor.Models
+@using Blazor.Components
 @inject IQuizService QuizService
 @inject NavigationManager Navigation
 
@@ -50,7 +51,16 @@ else
                     var question = currentQuiz.Questions[currentQuestionIndex];
                     <div class="quiz-card card shadow-lg border-0">
                         <div class="card-body p-5">
-                            <h3 class="card-title mb-4">@question.QuestionText</h3>
+                            <h3 class="card-title mb-4">
+                                @if (ContainsCode(question.QuestionText))
+                                {
+                                    @RenderQuestionWithCode(question.QuestionText)
+                                }
+                                else
+                                {
+                                    @question.QuestionText
+                                }
+                            </h3>
                             
                             <div class="answer-info mb-3">
                                 <div class="alert alert-info d-flex align-items-center" role="alert">
@@ -430,8 +440,11 @@ else
             quizCompleted = false;
             
             // Reshuffle options for the previous question
-            var previousQuestion = currentQuiz.Questions[currentQuestionIndex];
-            ReshuffleQuestionOptions(previousQuestion);
+            if (currentQuiz != null)
+            {
+                var previousQuestion = currentQuiz.Questions[currentQuestionIndex];
+                ReshuffleQuestionOptions(previousQuestion);
+            }
         }
     }
 
@@ -550,6 +563,39 @@ else
             "video" => "Se video",
             "website" => "Gå til hjemmeside",
             _ => "Lær mere"
+        };
+    }
+
+    private bool ContainsCode(string text)
+    {
+        return text.Contains("for (") || text.Contains("while (") || text.Contains("if (") || 
+               text.Contains("Console.WriteLine") || text.Contains("int ") || text.Contains("string ") ||
+               text.Contains("List<") || text.Contains("Dictionary<") || text.Contains("foreach (");
+    }
+
+    private RenderFragment RenderQuestionWithCode(string questionText)
+    {
+        return builder =>
+        {
+            var parts = questionText.Split(new[] { ": " }, StringSplitOptions.None);
+            if (parts.Length == 2)
+            {
+                // Question part before ": "
+                builder.OpenElement(0, "span");
+                builder.AddContent(1, parts[0] + ": ");
+                builder.CloseElement();
+
+                // Code block
+                builder.OpenComponent<CodeBlock>(2);
+                builder.AddAttribute(3, "Code", parts[1]);
+                builder.AddAttribute(4, "Language", "csharp");
+                builder.CloseComponent();
+            }
+            else
+            {
+                // Fallback to regular text
+                builder.AddContent(5, questionText);
+            }
         };
     }
 }

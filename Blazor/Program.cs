@@ -16,6 +16,9 @@ namespace Blazor
             // Add QuizService
             builder.Services.AddScoped<IQuizService, QuizService>();
             
+            // Add QuizIndexGenerator
+            builder.Services.AddScoped<IQuizIndexGenerator, QuizIndexGenerator>();
+            
             // Add Health Checks
             builder.Services.AddHealthChecks();
 

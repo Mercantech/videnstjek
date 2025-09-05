@@ -1,0 +1,30 @@
+@using System.Text.RegularExpressions
+
+<div class="code-block">
+    <div class="code-header">
+        <span class="code-language">@Language</span>
+        <button class="code-copy-btn" @onclick="CopyCode" title="Kopier kode">
+            <i class="fas fa-copy"></i>
+        </button>
+    </div>
+    <pre class="code-content"><code class="language-@Language.ToLower()">@Code</code></pre>
+</div>
+
+@code {
+    [Parameter] public string Code { get; set; } = "";
+    [Parameter] public string Language { get; set; } = "csharp";
+    [Inject] private IJSRuntime JSRuntime { get; set; } = default!;
+
+    private async Task CopyCode()
+    {
+        try
+        {
+            await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", Code);
+            // You could add a toast notification here
+        }
+        catch (Exception)
+        {
+            // Handle copy error silently
+        }
+    }
+}

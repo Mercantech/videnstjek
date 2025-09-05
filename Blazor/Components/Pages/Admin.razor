@@ -2,6 +2,7 @@
 @using Blazor.Service
 @using Blazor.Models
 @inject IQuizService QuizService
+@inject IQuizIndexGenerator QuizIndexGenerator
 @inject NavigationManager Navigation
 
 <PageTitle>Admin - Quiz Administration</PageTitle>
@@ -14,9 +15,22 @@
                     <h1 class="display-5 fw-bold text-primary mb-2">Quiz Administration</h1>
                     <p class="lead text-muted">Administrer og rediger quizzer</p>
                 </div>
-                <button class="btn btn-success btn-lg" @onclick="() => ShowAddQuizModal()">
-                    <i class="fas fa-plus me-2"></i>Ny Quiz
-                </button>
+                <div class="btn-group" role="group">
+                    <button class="btn btn-success btn-lg" @onclick="() => ShowAddQuizModal()">
+                        <i class="fas fa-plus me-2"></i>Ny Quiz
+                    </button>
+                    <button class="btn btn-outline-primary btn-lg" @onclick="GenerateIndex" disabled="@isGeneratingIndex">
+                        @if (isGeneratingIndex)
+                        {
+                            <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                        }
+                        else
+                        {
+                            <i class="fas fa-sync me-2"></i>
+                        }
+                        Generer Index
+                    </button>
+                </div>
             </div>
 
             @if (quizzes == null)
@@ -234,6 +248,7 @@
     private Quiz? editingQuiz;
     private Quiz currentQuiz = new();
     private int nextQuestionId = 1;
+    private bool isGeneratingIndex = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -418,5 +433,27 @@
             "avanceret" => "danger",
             _ => "secondary"
         };
+    }
+
+    private async Task GenerateIndex()
+    {
+        isGeneratingIndex = true;
+        StateHasChanged();
+
+        try
+        {
+            await QuizIndexGenerator.GenerateIndexAsync();
+            await LoadQuizzes(); // Reload quizzes to reflect any changes
+        }
+        catch (Exception ex)
+        {
+            // Log error or show user message
+            Console.WriteLine($"Fejl ved generering af index: {ex.Message}");
+        }
+        finally
+        {
+            isGeneratingIndex = false;
+            StateHasChanged();
+        }
     }
 }
