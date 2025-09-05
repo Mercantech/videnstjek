@@ -5,6 +5,8 @@
 @using Blazor.Components
 @inject IQuizService QuizService
 @inject NavigationManager Navigation
+@inject IJSRuntime JSRuntime
+@implements IDisposable
 
 <PageTitle>Quiz - Videnstjek</PageTitle>
 
@@ -34,6 +36,15 @@ else
                             <span class="badge bg-@GetDifficultyColor(currentQuiz.Difficulty)">@currentQuiz.Difficulty</span>
                             <span class="badge bg-info">@currentQuiz.EstimatedTime</span>
                         </div>
+                        @if (currentQuestionIndex == 0)
+                        {
+                            <div class="mt-2">
+                                <small class="text-muted">
+                                    <i class="fas fa-keyboard me-1"></i>
+                                    Tip: Brug <kbd>A</kbd>, <kbd>B</kbd>, <kbd>C</kbd>, <kbd>D</kbd> til at vælge svar og <kbd>Enter</kbd> til at bekræfte
+                                </small>
+                            </div>
+                        }
                     </div>
                     
                     <div class="progress mb-3" style="height: 8px;">
@@ -81,9 +92,16 @@ else
                                     <div class="option-item @(isSelected ? "selected" : "") 
                                          @(showResult ? (isCorrect ? "correct" : (isSelected && !isCorrect ? "incorrect" : "")) : "")
                                          @(isDisabled ? "disabled" : "")"
-                                         @onclick="() => SelectAnswer(option.Key)">
+                                         @onclick="() => SelectAnswer(option.Key)"
+                                         data-key="@option.Key">
                                         <div class="option-content">
-                                            <span class="option-letter">@option.Key)</span>
+                                            <span class="option-letter">
+                                                @option.Key)
+                                                @if (!quizCompleted)
+                                                {
+                                                    <kbd class="ms-2">@option.Key</kbd>
+                                                }
+                                            </span>
                                             <span class="option-text">@option.Value</span>
                                         </div>
                                         @if (showResult)
@@ -357,6 +375,58 @@ else
             // Redirect to quiz list if quiz not found
             Navigation.NavigateTo("/quizzes");
         }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("addKeyboardListener", DotNetObjectReference.Create(this));
+        }
+    }
+
+    [JSInvokable]
+    public async Task HandleKeyPress(string key)
+    {
+        await InvokeAsync(() =>
+        {
+            if (key == "Enter")
+            {
+                if (!quizCompleted && selectedAnswers.Count == currentQuiz?.Questions[currentQuestionIndex].ExpectedAnswerCount)
+                {
+                    // Submit answer if we have the right number of answers selected
+                    SubmitAnswer();
+                }
+                else if (quizCompleted && currentQuestionIndex < currentQuiz?.Questions.Count - 1)
+                {
+                    // Go to next question if quiz is completed and there are more questions
+                    NextQuestion();
+                }
+                else if (quizCompleted && currentQuestionIndex == currentQuiz?.Questions.Count - 1 && !showFinalResults)
+                {
+                    // Show final results if this is the last question
+                    ShowFinalResults();
+                }
+            }
+            else if (key.ToUpper() is "A" or "B" or "C" or "D" or "E" or "F")
+            {
+                // Handle answer selection with keyboard
+                if (!quizCompleted && currentQuiz != null)
+                {
+                    var currentQuestion = currentQuiz.Questions[currentQuestionIndex];
+                    if (currentQuestion.ShuffledOptions.ContainsKey(key.ToUpper()))
+                    {
+                        SelectAnswer(key.ToUpper());
+                    }
+                }
+            }
+            StateHasChanged();
+        });
+    }
+
+    public void Dispose()
+    {
+        JSRuntime.InvokeVoidAsync("removeKeyboardListener");
     }
 
     private void SelectAnswer(string option)
