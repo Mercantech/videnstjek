@@ -10,6 +10,23 @@
 
 <PageTitle>Quiz - Videnstjek</PageTitle>
 
+<!-- Toast Container -->
+<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1055;">
+    @if (showToast)
+    {
+        <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-warning text-dark">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <strong class="me-auto">Vent venligst</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" @onclick="HideToast"></button>
+            </div>
+            <div class="toast-body">
+                @toastMessage
+            </div>
+        </div>
+    }
+</div>
+
 @if (currentQuiz == null)
 {
     <div class="container py-5">
@@ -97,10 +114,6 @@ else
                                         <div class="option-content">
                                             <span class="option-letter">
                                                 @option.Key)
-                                                @if (!quizCompleted)
-                                                {
-                                                    <kbd class="ms-2">@option.Key</kbd>
-                                                }
                                             </span>
                                             <span class="option-text">@option.Value</span>
                                         </div>
@@ -213,8 +226,7 @@ else
 
                                 @if (!quizCompleted)
                                 {
-                                    <button class="btn btn-primary" @onclick="SubmitAnswer" 
-                                            disabled="@(selectedAnswers.Count != currentQuiz.Questions[currentQuestionIndex].ExpectedAnswerCount)">
+                                    <button class="btn btn-primary" @onclick="SubmitAnswer">
                                         <i class="fas fa-check me-2"></i>Bekræft svar
                                     </button>
                                 }
@@ -356,6 +368,10 @@ else
     private int score = 0;
     private List<bool> questionScores = new();
     private bool showFinalResults = false;
+    
+    // Toast variables
+    private bool showToast = false;
+    private string toastMessage = "";
 
     protected override async Task OnInitializedAsync()
     {
@@ -392,10 +408,19 @@ else
         {
             if (key == "Enter")
             {
-                if (!quizCompleted && selectedAnswers.Count == currentQuiz?.Questions[currentQuestionIndex].ExpectedAnswerCount)
+                if (!quizCompleted && currentQuiz != null)
                 {
-                    // Submit answer if we have the right number of answers selected
-                    SubmitAnswer();
+                    var currentQuestion = currentQuiz.Questions[currentQuestionIndex];
+                    if (selectedAnswers.Count == currentQuestion.ExpectedAnswerCount)
+                    {
+                        // Submit answer if we have the right number of answers selected
+                        SubmitAnswer();
+                    }
+                    else
+                    {
+                        // Show toast if not enough answers selected
+                        ShowToast($"Vælg venligst {currentQuestion.ExpectedAnswerCount} svar før du bekræfter.");
+                    }
                 }
                 else if (quizCompleted && currentQuestionIndex < currentQuiz?.Questions.Count - 1)
                 {
@@ -458,6 +483,7 @@ else
         // Kun tillad svar hvis præcis det forventede antal er valgt
         if (selectedAnswers.Count != currentQuestion.ExpectedAnswerCount)
         {
+            ShowToast($"Vælg venligst {currentQuestion.ExpectedAnswerCount} svar før du bekræfter.");
             return;
         }
 
@@ -667,5 +693,25 @@ else
                 builder.AddContent(5, questionText);
             }
         };
+    }
+
+    private void ShowToast(string message)
+    {
+        toastMessage = message;
+        showToast = true;
+        StateHasChanged();
+        
+        // Auto-hide toast after 3 seconds
+        Task.Delay(3000).ContinueWith(_ => InvokeAsync(() =>
+        {
+            showToast = false;
+            StateHasChanged();
+        }));
+    }
+
+    private void HideToast()
+    {
+        showToast = false;
+        StateHasChanged();
     }
 }
