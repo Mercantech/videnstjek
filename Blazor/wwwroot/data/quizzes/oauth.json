@@ -1,0 +1,201 @@
+{
+  "id": "oauth",
+  "title": "OAuth 2.0 (grundlæggende)",
+  "description": "Test din viden om OAuth 2.0: roller, authorization code flow, tokens, scopes, PKCE og sikkerhed",
+  "category": "Backend",
+  "difficulty": "Mellem",
+  "estimatedTime": "10-12 minutter",
+  "questions": [
+    {
+      "id": 1,
+      "questionText": "Hvad er OAuth 2.0 primært?",
+      "options": {
+        "A": "En krypteringsstandard til passwords",
+        "B": "Et framework til at give tredjeparts-apps begrænset adgang uden at dele brugerens password",
+        "C": "En database til brugere",
+        "D": "En erstatning for HTTPS"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ OAuth handler ikke om at kryptere passwords.",
+        "B": "✅ OAuth 2.0 bruges til autorisation – at delegere adgang (fx 'log ind med Google') uden at give appen brugerens password.",
+        "C": "❌ OAuth er ikke en database.",
+        "D": "❌ OAuth bruges ofte over HTTPS, men erstatter det ikke."
+      },
+      "learnMore": {
+        "title": "An Introduction to OAuth 2.0",
+        "description": "OAuth 2.0 oversigt og roller fra Auth0.",
+        "url": "https://auth0.com/intro-to-oauth",
+        "type": "article",
+        "icon": "fas fa-key"
+      }
+    },
+    {
+      "id": 2,
+      "questionText": "Hvilke roller findes i OAuth 2.0?",
+      "options": {
+        "A": "Resource Owner, Client, Authorization Server, Resource Server",
+        "B": "Admin, User, Database, Cache",
+        "C": "Browser, API, DNS, Firewall",
+        "D": "Kun 'User' og 'Server'"
+      },
+      "correctAnswers": ["A"],
+      "explanations": {
+        "A": "✅ Resource Owner = brugeren; Client = appen; Authorization Server = udsteder tokens; Resource Server = API der beskytter data.",
+        "B": "❌ Det er ikke OAuth-roller.",
+        "C": "❌ Det er ikke OAuth-roller.",
+        "D": "❌ OAuth 2.0 definerer fire typer af aktører."
+      }
+    },
+    {
+      "id": 3,
+      "questionText": "Hvilket flow anbefales typisk til en web-app med server (backend), hvor brugeren logger ind via browser?",
+      "options": {
+        "A": "Implicit flow",
+        "B": "Authorization Code flow",
+        "C": "Resource Owner Password flow",
+        "D": "Client Credentials flow"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Implicit flow er forældet og usikkert – token kan ende i URL.",
+        "B": "✅ Authorization Code flow: browser får en code, backend bytter den til token – sikrere, ingen token i browser.",
+        "C": "❌ Password flow kræver at appen håndterer password – undgå med tredjeparts-login.",
+        "D": "❌ Client Credentials er til machine-to-machine, ikke bruger-login."
+      }
+    },
+    {
+      "id": 4,
+      "questionText": "Hvad er forskellen mellem et access token og et refresh token i OAuth?",
+      "options": {
+        "A": "Access token bruges til at hente nye tokens; refresh token til at kalde API",
+        "B": "Access token bruges til at kalde API; refresh token bruges til at få nye access tokens",
+        "C": "De er det samme",
+        "D": "Kun access token findes i OAuth"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Det er omvendt.",
+        "B": "✅ Access token sendes til Resource Server; refresh token bruges hos Authorization Server til nye access tokens.",
+        "C": "❌ De har forskellige formål og levetid.",
+        "D": "❌ OAuth 2.0 understøtter begge."
+      }
+    },
+    {
+      "id": 5,
+      "questionText": "Hvad bruges OAuth 'scopes' til?",
+      "options": {
+        "A": "At begrænse hvilke ressourcer/rettigheder klienten får adgang til",
+        "B": "At kryptere tokens",
+        "C": "At vælge hvilken database der bruges",
+        "D": "At sætte session timeout"
+      },
+      "correctAnswers": ["A"],
+      "explanations": {
+        "A": "✅ Scopes angiver fx 'read:email' eller 'openid' – hvad appen må gøre på brugerens vegne.",
+        "B": "❌ Scopes begrænser rettigheder; de krypterer ikke tokens.",
+        "C": "❌ Scopes har intet med databasevalg at gøre.",
+        "D": "❌ Session/timeout håndteres typisk af token expiry, ikke scopes."
+      }
+    },
+    {
+      "id": 6,
+      "questionText": "Hvorfor anbefales det ofte at bruge PKCE (Proof Key for Code Exchange) ved OAuth?",
+      "options": {
+        "A": "For at gøre authorization code flow hurtigere",
+        "B": "For at beskytte mod at authorization code bliver stjålet og brugt (især ved public clients som SPA/mobile)",
+        "C": "For at fjerne behovet for client secret",
+        "D": "Kun for at understøtte ældre browsere"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ PKCE handler om sikkerhed, ikke hastighed.",
+        "B": "✅ PKCE binder code-udvekslingen til den oprindelige anmodning, så en stjålen code er ubrugelig uden code_verifier.",
+        "C": "❌ PKCE erstatter ikke nødvendigvis client secret overalt; det hjælper public clients som ikke kan gemme secrets.",
+        "D": "❌ PKCE er en sikkerhedsforbedring, ikke browserkompatibilitet."
+      },
+      "learnMore": {
+        "title": "PKCE (RFC 7636)",
+        "description": "Hvordan PKCE beskytter authorization code flow.",
+        "url": "https://oauth.net/2/pkce/",
+        "type": "docs",
+        "icon": "fas fa-shield-alt"
+      }
+    },
+    {
+      "id": 7,
+      "questionText": "Hvad er en 'public client' i OAuth?",
+      "options": {
+        "A": "En server der kører i det offentlige cloud",
+        "B": "En klient der ikke sikkert kan gemme en client secret (fx SPA, mobil-app)",
+        "C": "En klient der er open source",
+        "D": "En klient der kun bruger HTTPS"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Det handler ikke om hvor serveren kører.",
+        "B": "✅ Public client = kan ikke holde secrets hemmelige (browser/mobile); confidential client = har backend og kan gemme client secret.",
+        "C": "❌ Open source er ikke definitionen af public client.",
+        "D": "❌ HTTPS bruges af både public og confidential clients."
+      }
+    },
+    {
+      "id": 8,
+      "questionText": "Hvilke udsagn om 'Log ind med Google' / 'Login with GitHub' er korrekte?",
+      "options": {
+        "A": "Det bruger typisk OAuth 2.0 (eller OpenID Connect) til at delegere adgang",
+        "B": "Din app får brugerens password til Google/GitHub",
+        "C": "Brugeren godkender hos Google/GitHub og bliver omdirigeret tilbage med en code eller token",
+        "D": "OAuth erstatter behovet for HTTPS"
+      },
+      "correctAnswers": ["A", "C"],
+      "explanations": {
+        "A": "✅ 'Log ind med X' er typisk OAuth 2.0 eller OIDC (som bygger på OAuth).",
+        "B": "❌ Din app får aldrig brugerens password – det er pointen med OAuth.",
+        "C": "✅ Brugeren logger ind hos identity provider og redirectes tilbage med code (eller token i ældre flows).",
+        "D": "❌ OAuth bruges over HTTPS; det erstatter det ikke."
+      }
+    },
+    {
+      "id": 9,
+      "questionText": "Hvorfor er 'Implicit flow' (token direkte i redirect-URL) anbefalet undgået?",
+      "options": {
+        "A": "Fordi det er for langsomt",
+        "B": "Fordi access token kan ende i browserhistorik, referrer eller logs og dermed lække",
+        "C": "Fordi det ikke understøtter scopes",
+        "D": "Fordi det kun virker på mobile"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Problemet er sikkerhed, ikke hastighed.",
+        "B": "✅ Token i URL/fragment kan lække; Authorization Code (+ PKCE) er sikrere.",
+        "C": "❌ Implicit flow understøtter scopes.",
+        "D": "❌ Implicit blev brugt især i browsere, ikke kun mobile."
+      }
+    },
+    {
+      "id": 10,
+      "questionText": "Hvad er forskellen mellem OAuth 2.0 og OpenID Connect (OIDC)?",
+      "options": {
+        "A": "OIDC erstatter OAuth helt",
+        "B": "OAuth handler om autorisation (adgang); OIDC bygger ovenpå og tilføjer standardiseret identitetsinfo (fx hvem brugeren er)",
+        "C": "OIDC er kun til mobile apps",
+        "D": "De er identiske"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ OIDC bygger på OAuth 2.0 og udvider den – erstatter den ikke.",
+        "B": "✅ OAuth = delegeret adgang; OIDC = OAuth + ID token + userinfo så du får standardiseret 'hvem er brugeren'.",
+        "C": "❌ OIDC bruges på web og mobile.",
+        "D": "❌ OIDC tilføjer identitetslag oven på OAuth."
+      },
+      "learnMore": {
+        "title": "OpenID Connect",
+        "description": "Kort overblik over OIDC og forholdet til OAuth 2.0.",
+        "url": "https://openid.net/connect/",
+        "type": "docs",
+        "icon": "fas fa-id-card"
+      }
+    }
+  ]
+}

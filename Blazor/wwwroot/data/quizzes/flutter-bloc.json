@@ -1,0 +1,201 @@
+{
+  "id": "flutter-bloc",
+  "title": "Flutter - BLoC (grundlæggende)",
+  "description": "Test din viden om BLoC i Flutter: hvad det er, Cubit vs Bloc, events og states, BlocProvider, BlocBuilder og typisk brug",
+  "category": "Flutter",
+  "difficulty": "Begynder",
+  "estimatedTime": "8-12 minutter",
+  "questions": [
+    {
+      "id": 1,
+      "questionText": "Hvad står BLoC for?",
+      "options": {
+        "A": "Binary Logic Controller",
+        "B": "Business Logic Component",
+        "C": "Bloc Layer of Code",
+        "D": "Base Layout and Components"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ BLoC er ikke en 'Binary Logic Controller'.",
+        "B": "✅ BLoC står for Business Logic Component – en måde at flytte forretningslogik væk fra UI.",
+        "C": "❌ Det er ikke 'Bloc Layer of Code'.",
+        "D": "❌ BLoC handler om state/logik, ikke layout-komponenter."
+      },
+      "learnMore": {
+        "title": "BLoC Library – Introduction",
+        "description": "Officiel intro til BLoC-pattern og flutter_bloc.",
+        "url": "https://bloclibrary.dev/#/gettingstarted",
+        "type": "docs",
+        "icon": "fas fa-cube"
+      }
+    },
+    {
+      "id": 2,
+      "questionText": "Hvad er hovedidéen med BLoC-patternet?",
+      "options": {
+        "A": "At skille forretningslogik fra UI og lade UI reagere på state-ændringer",
+        "B": "At erstatte alle widgets med custom painters",
+        "C": "At fjerne behovet for setState() ved at bruge global state overalt",
+        "D": "At kun bruge BLoC til API-kald og intet andet"
+      },
+      "correctAnswers": ["A"],
+      "explanations": {
+        "A": "✅ BLoC holder logik og state ét sted; UI lytter og bygger om når state ændres.",
+        "B": "❌ BLoC har intet at gøre med CustomPainter.",
+        "C": "❌ BLoC bruges ikke til at 'erstatte setState overalt' – det er et valgt arkitekturmønster.",
+        "D": "❌ BLoC kan bruges til meget mere end kun API-kald."
+      }
+    },
+    {
+      "id": 3,
+      "questionText": "Hvad er den vigtigste forskel mellem Cubit og Bloc?",
+      "options": {
+        "A": "Cubit er hurtigere end Bloc",
+        "B": "Cubit har ingen events – man kalder metoder direkte; Bloc modtager events og mapper dem til states",
+        "C": "Bloc kan ikke bruge Streams",
+        "D": "Cubit er kun til Flutter, Bloc til alle platforme"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Forskellen handler ikke primært om hastighed.",
+        "B": "✅ Cubit: du kalder fx cubit.loadData(); Bloc: du add'er events, og Bloc mapper dem til nye states.",
+        "C": "❌ Bloc bruger netop Streams (events → states).",
+        "D": "❌ Både Cubit og Bloc bruges i Flutter (og andre Dart-apps)."
+      },
+      "learnMore": {
+        "title": "Cubit vs Bloc",
+        "description": "Hvornår du vælger Cubit vs Bloc i praksis.",
+        "url": "https://bloclibrary.dev/#/coreconcepts?id=cubit-vs-bloc",
+        "type": "docs",
+        "icon": "fas fa-code-branch"
+      }
+    },
+    {
+      "id": 4,
+      "questionText": "Hvordan giver du en Bloc/Cubit til widget-træet, så børn kan bruge den?",
+      "options": {
+        "A": "BlocBuilder",
+        "B": "BlocProvider",
+        "C": "BlocListener",
+        "D": "BlocConsumer"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ BlocBuilder bruges til at bygge UI ud fra state – den giver ikke Bloc til træet.",
+        "B": "✅ BlocProvider er den der 'injecter' Bloc/Cubit, så den er tilgængelig for børn.",
+        "C": "❌ BlocListener lytter på state (fx til SnackBar) – den opretter ikke Bloc.",
+        "D": "❌ BlocConsumer kombinerer builder + listener, men provideren er stadig BlocProvider."
+      }
+    },
+    {
+      "id": 5,
+      "questionText": "Hvilke widgets bruges typisk til at bygge UI op baseret på Bloc/Cubit state?",
+      "options": {
+        "A": "BlocProvider",
+        "B": "BlocBuilder",
+        "C": "StreamBuilder",
+        "D": "FutureBuilder"
+      },
+      "correctAnswers": ["B", "C"],
+      "explanations": {
+        "A": "❌ BlocProvider giver Bloc til træet; den bygger ikke UI ud fra state.",
+        "B": "✅ BlocBuilder genbygger widget når state ændres – standard med BLoC.",
+        "C": "✅ Du kan også bruge StreamBuilder direkte på Bloc's stream, men BlocBuilder er mere praktisk.",
+        "D": "❌ FutureBuilder er til enkeltstående Future, ikke løbende Stream/state."
+      }
+    },
+    {
+      "id": 6,
+      "questionText": "Hvordan bør states i BLoC typisk være designet?",
+      "options": {
+        "A": "Mutable, så Bloc kan ændre felter direkte",
+        "B": "Immutabel – nye state-objekter ved hver ændring",
+        "C": "Private, så kun Bloc kan læse dem",
+        "D": "Altid nullable (kan være null)"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Mutabel state gør det sværere at forudsige og teste.",
+        "B": "✅ Man emitter nye state-objekter (fx kopier med ændringer) i stedet for at mutere.",
+        "C": "❌ Det handler om immutabilitet, ikke synlighed.",
+        "D": "❌ State kan godt være non-nullable (fx en enum eller en data-klasse)."
+      }
+    },
+    {
+      "id": 7,
+      "questionText": "Hvor 'bor' forretningslogikken typisk i en BLoC-arkitektur?",
+      "options": {
+        "A": "I build()-metoden i widgets",
+        "B": "I Bloc/Cubit-klassen",
+        "C": "Kun i repositories",
+        "D": "I BlocProvider-konstruktøren"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ build() bør være ren præsentation – ingen forretningslogik.",
+        "B": "✅ Bloc/Cubit indeholder logikken: hvordan events/reducer/metoder ændrer state.",
+        "C": "❌ Repositories henter/gemmer data; logikken (hvad der sker ved brugerhandlinger) ligger ofte i Bloc.",
+        "D": "❌ BlocProvider opretter kun instansen; logikken er i Bloc/Cubit selv."
+      }
+    },
+    {
+      "id": 8,
+      "questionText": "I en Bloc (ikke Cubit): hvad er forholdet mellem Events og States?",
+      "options": {
+        "A": "Events er input fra UI; States er output som UI lytter på",
+        "B": "Events og States er det samme",
+        "C": "States sendes til Bloc, Events returneres",
+        "D": "Kun States bruges; Events findes ikke i Bloc"
+      },
+      "correctAnswers": ["A"],
+      "explanations": {
+        "A": "✅ UI add'er events (fx LoadPressed); Bloc konverterer dem til nye states som UI bygger efter.",
+        "B": "❌ De er forskellige: events = input, states = output.",
+        "C": "❌ Det er omvendt: events ind, states ud.",
+        "D": "❌ Bloc bruger netop events som input."
+      }
+    },
+    {
+      "id": 9,
+      "questionText": "Hvilket pakkenavn er det officielle BLoC-pakke til Flutter?",
+      "options": {
+        "A": "bloc",
+        "B": "flutter_bloc",
+        "C": "dart_bloc",
+        "D": "state_bloc"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ 'bloc' er den kerne-Dart pakke (Stream + Cubit/Bloc); Flutter-widgets kommer i flutter_bloc.",
+        "B": "✅ flutter_bloc indeholder BlocProvider, BlocBuilder, BlocListener m.m. til Flutter.",
+        "C": "❌ Der findes ikke et officielt pakkenavn 'dart_bloc' på den måde.",
+        "D": "❌ 'state_bloc' er ikke det officielle navn."
+      }
+    },
+    {
+      "id": 10,
+      "questionText": "Hvornår vælger du ofte BlocListener i stedet for (eller sammen med) BlocBuilder?",
+      "options": {
+        "A": "Når du ikke må bruge BlocProvider",
+        "B": "Når du skal reagere på state (fx vise SnackBar eller navigere) uden nødvendigvis at genbygge UI",
+        "C": "Når du vil skjule Bloc fra børn",
+        "D": "Kun når du bruger Cubit og ikke Bloc"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ BlocListener har ikke at gøre med at undgå BlocProvider.",
+        "B": "✅ BlocListener lytter og kan vise dialog/SnackBar/navigation uden at genbygge hele widget-træet.",
+        "C": "❌ Det handler om side effects (reaktioner), ikke om at skjule Bloc.",
+        "D": "❌ BlocListener virker med både Bloc og Cubit."
+      },
+      "learnMore": {
+        "title": "BlocListener",
+        "description": "Dokumentation af BlocListener og hvornår den bruges.",
+        "url": "https://bloclibrary.dev/#/flutterblocwidgets?id=bloclistener",
+        "type": "docs",
+        "icon": "fas fa-ear-listen"
+      }
+    }
+  ]
+}
